@@ -1,0 +1,4 @@
+Draughts
+========
+
+Automatic draughts player
