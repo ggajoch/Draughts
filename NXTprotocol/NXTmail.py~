@@ -1,0 +1,23 @@
+import sys
+from Serial import serial
+
+
+class sender:
+    def init(device):
+        #Serial.open("/dev/ttyS0",115200)
+        pass
+
+    def send(x):
+        print x
+
+    def sendCommand(comm):
+        MessLen = []
+        length = len(comm)
+        MessLen[0] = (length & 0xFF)
+        print MessLen
+
+
+
+if __name__ == "__main__":
+    a = seder()
+    a.sendCommand([0,1,1,2])
