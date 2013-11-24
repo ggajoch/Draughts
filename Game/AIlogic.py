@@ -1,6 +1,8 @@
-from basicStructs import *
 import copy
 import sys
+
+from basicStructs import *
+
 #from gameLogic import *
 
 #CONSTANTS:
@@ -118,44 +120,41 @@ def minimaks(board, depth, maximizingPlayer):
 if __name__ == "__main__":
     a = Board();
 
+    for i in range(0, 8, 2):
+        a.set(i, 0, Field.AI)
+        a.set(i, 6, Field.HU)
 
-    a.set(4,6,Field.AI_KING)
-    #a.set(1,1,Field.HU)
-    a.set(1,1,Field.HU)
-    a.set(3,3,Field.HU)
-    a.set(5,5,Field.HU)
-    a.set(3,5,Field.HU)
-    a.set(1,3,Field.HU)
-    a.set(3,1,Field.HU)
-    a.set(5,1,Field.HU)
-
+    for i in range(1, 8, 2):
+        a.set(i, 1, Field.AI)
+        a.set(i, 7, Field.HU)
 
     print a
     print a.possibleMoves()
-
-    sys.exit(0)
+    sys.stdout.flush()
     turns = 0
     while a.gameWon() == 0:
         turns += 1
         sys.stdout.write("Turn "+str(turns))
-        res = minimaks(copy.deepcopy(a), 5, True)
+        res = minimaks(copy.deepcopy(a), 6, True)
         print "White:",res[1]
         a.executeMove(res[1])
 
         if a.gameWon() != 0: 
             break
 
-        a.swapSides()
-        res = minimaks(copy.deepcopy(a), 5, True)
-        print "black:",res[1]
-        a.executeMove(res[1])
+        m = input("Moves? ")
+        for i in xrange(m):
+            x = input("SrcX? ")
+            b = input("SrcY? ")
+            c = input("DstX? ")
+            d = input("DstY? ")
 
-        a.swapSides()
-        #print a
-        sys.stdout.flush()
-        if turns > 50:
-            break
+            Move = [Shift([x, b], [c, d])]
+            a.executeMove(Move)
 
     print a
-    print a.gameWon()
-    print "turns=",turns
+    if a.gameWon() == 1:
+        print "AI won!"
+    else:
+        print "Human won!"
+    print "In", turns, "turns."

@@ -16,7 +16,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Draughts$AIlogic.coverage" NAME="AIlogic Coverage Results" MODIFIED="1385253146077" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Game" />
+    <SUITE FILE_PATH="coverage/Draughts$AIlogic.coverage" NAME="AIlogic Coverage Results" MODIFIED="1385257729068" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Game" />
     <SUITE FILE_PATH="coverage/Draughts$basicStructs.coverage" NAME="basicStructs Coverage Results" MODIFIED="1385252590177" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Game" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -36,7 +36,7 @@
           <file leaf-file-name="AIlogic.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Game/AIlogic.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="121" column="13" selection-start="3256" selection-end="3256" vertical-scroll-proportion="0.72167486" vertical-offset="1471" max-vertical-offset="2839">
+                <state line="120" column="4" selection-start="3246" selection-end="3246" vertical-scroll-proportion="0.2590799" vertical-offset="1933" max-vertical-offset="2805">
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -51,7 +51,7 @@
           <file leaf-file-name="basicStructs.py" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Game/basicStructs.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="201" column="37" selection-start="6256" selection-end="6256" vertical-scroll-proportion="0.65270936" vertical-offset="2887" max-vertical-offset="5219">
+                <state line="93" column="36" selection-start="2669" selection-end="2669" vertical-scroll-proportion="3.943299" vertical-offset="51" max-vertical-offset="5117">
                   <folding />
                 </state>
               </provider>
@@ -84,10 +84,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="2576" />
-    <option name="height" value="1426" />
+    <option name="x" value="2552" />
+    <option name="y" value="190" />
+    <option name="width" value="1296" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -391,6 +391,11 @@
       <created>1385160098301</created>
       <updated>1385160098301</updated>
     </task>
+    <task id="LOCAL-00001" summary="Multiple beats added.">
+      <created>1385253208891</created>
+      <updated>1385253208891</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -414,19 +419,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1426" extended-state="6" />
+    <frame x="2552" y="190" width="1296" height="1040" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972136" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972136" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13515624" sideWeight="0.64860684" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14140625" sideWeight="0.49889624" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3513932" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3513932" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3513932" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.50110376" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22058824" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -444,6 +450,8 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="Multiple beats added." />
+    <option name="LAST_COMMIT_MESSAGE" value="Multiple beats added." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -460,14 +468,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Game/basicStructs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="201" column="37" selection-start="6256" selection-end="6256" vertical-scroll-proportion="0.65270936" vertical-offset="2887" max-vertical-offset="5219">
+        <state line="93" column="36" selection-start="2669" selection-end="2669" vertical-scroll-proportion="3.943299" vertical-offset="51" max-vertical-offset="5117">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Game/AIlogic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="13" selection-start="3256" selection-end="3256" vertical-scroll-proportion="0.72167486" vertical-offset="1471" max-vertical-offset="2839">
+        <state line="120" column="4" selection-start="3246" selection-end="3246" vertical-scroll-proportion="0.2590799" vertical-offset="1933" max-vertical-offset="2805">
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
