@@ -118,36 +118,22 @@ def minimaks(board, depth, maximizingPlayer):
 if __name__ == "__main__":
     a = Board();
 
-    """a.set(1,3,Field.AI);
-    a.set(3,1,Field.AI);
-    a.set(5,3,Field.AI);
-    a.set(5,5,Field.AI);
-    a.set(6,6,Field.AI);
 
-    a.set(4,2,Field.HU);
-    a.set(4,4,Field.HU);"""
-    
+    a.set(4,6,Field.AI_KING)
+    #a.set(1,1,Field.HU)
+    a.set(1,1,Field.HU)
+    a.set(3,3,Field.HU)
+    a.set(5,5,Field.HU)
+    a.set(3,5,Field.HU)
+    a.set(1,3,Field.HU)
+    a.set(3,1,Field.HU)
+    a.set(5,1,Field.HU)
 
-    """a.set(3,7,Field.HU_KING)
-    a.set(5,7,Field.AI_KING)
-    a.set(6,6,Field.AI)
-    a.set(0,6,Field.AI)"""
-    
-    #a.set(1,7,Field.HU_KING)
-    a.set(5,7,Field.AI_KING)
-    a.set(7,7,Field.AI_KING)
-    a.set(3,7,Field.HU_KING)
-
-
-    #a.set(4,0,Field.HU_KING);
-    #a.set(2,0,Field.AI_KING);
-
-    #a.set(6,7,Field.HU_KING)
-    #a.set(5,6,Field.AI)
 
     print a
     print a.possibleMoves()
 
+    sys.exit(0)
     turns = 0
     while a.gameWon() == 0:
         turns += 1
@@ -158,7 +144,7 @@ if __name__ == "__main__":
 
         if a.gameWon() != 0: 
             break
-            
+
         a.swapSides()
         res = minimaks(copy.deepcopy(a), 5, True)
         print "black:",res[1]

@@ -60,7 +60,10 @@ class Board:
 
         def set(self,x,y,what):
                 self[x,y] = what;
-                
+
+        def copy(self):
+            return copy.deepcopy(self)
+
         def __getitem__(self,key):
                 return self.Fields[key[0]][key[1]]
         def __setitem__(self, key, val):
@@ -165,6 +168,8 @@ def addToList(_list, _num):
 
 
 def kingBeats(board, pos):
+    global pawnBeatsTable
+    pawnBeatsTable = []
     res = []
     for dx,dy in [(-1,-1),(-1,1),(1,-1),(1,1)]:
         actual = [pos[0] + dx, pos[1] + dy]
@@ -172,13 +177,42 @@ def kingBeats(board, pos):
             if AIFigure(board[actual]):
                 break
             if humanFigure(board[actual]) and empty(board[actual[0] + dx, actual[1] + dy]):
-                res.append([Shift(pos, [actual[0] + dx, actual[1] + dy]), Shift(actual, nullPos)])
+                #attacking on actual, moving on Next
+                #res.append([Shift(pos, [actual[0] + dx, actual[1] + dy]), Shift(actual, nullPos)])
+
+                #checking for next attacks (like for pawn)
+                kingBeatsHelper(board, [actual[0] + dx, actual[1] + dy], pos, [Shift(actual,nullPos)], dy)
+
                 break
             if not empty(board[actual]):
                 break
             actual = [actual[0] + dx, actual[1] + dy]
-    return res
 
+
+    return pawnBeatsTable
+
+def kingBeatsHelper(board, pos, begin, toClear, direction):
+    global pawnBeatsTable
+    possibleAttack = 0
+    print "|||",pos,begin,toClear,direction,"|||"
+    for dx,dy in [(-1,direction),(1,direction)]:
+        actual = [pos[0] + dx, pos[1] + dy]
+        if 0 <= actual[0]+dx <= 7:
+            Next = [actual[0] + dx, actual[1] + dy]
+            if 0 <= actual[1]+dy <= 7:
+                print actual,Next
+                if humanFigure(board[actual]) and empty(board[actual[0] + dx, actual[1] + dy]):
+                    print "IN"
+                    possibleAttack = 1
+                    #check next beat on this position
+                    Move = [ Shift(pos, Next), Shift(actual, nullPos) ]
+                    board2 = board.copy()
+                    board2.executeMove(Move)
+                    kingBeatsHelper(board2, Next, begin, toClear + [Shift(actual,nullPos)],direction)
+
+    if possibleAttack == 0 and begin != pos:
+        toClear.append(Shift(begin, pos))
+        pawnBeatsTable.append(toClear)
 
 def kingMoves(board, pos):
     res = []
@@ -193,25 +227,49 @@ def kingMoves(board, pos):
     return res
 
 
+pawnBeatsTable = []
 def pawnBeats(board, pos):
-    res = []
+    global pawnBeatsTable
+    pawnBeatsTable = []
+    pawnBeatsHelper(board, pos, pos, []);
+    return pawnBeatsTable
+
+
+def pawnBeatsHelper(board, pos, begin, toClear):
+    global pawnBeatsTable
+    possibleAttack = 0
+    print "|",pos,"|"
     for dx,dy in [(-1,1),(1,1)]:
         actual = [pos[0] + dx, pos[1] + dy]
         if 0 <= actual[0]+dx <= 7:
+            Next = [actual[0] + dx, actual[1] + dy]
             if 1 <= actual[1]+dy <= 6:
+                print actual,Next
                 if humanFigure(board[actual]) and empty(board[actual[0] + dx, actual[1] + dy]):
-                    res.append([Shift(pos, [actual[0] + dx, actual[1] + dy]), Shift(actual, nullPos)])
+                    print "IN"
+                    possibleAttack = 1
+                    #check next beat on this position
+                    Move = [ Shift(pos, Next), Shift(actual, nullPos)]
+                    board2 = board.copy()
+                    board2.executeMove(Move)
+                    pawnBeatsHelper(board2, Next, begin, toClear + [Shift(actual,nullPos)])
+                    #res.append([Shift(pos, [actual[0] + dx, actual[1] + dy]), Shift(actual, nullPos)])
 
-            if actual[1]+dy == 0:
-                if humanFigure(board[actual]) and empty(board[actual[0] + dx, actual[1] + dy]):
-                    if board[pos] == Field.HU:
-                        res.append([Shift(HUkingPos, [actual[0] + dx, actual[1] + dy]), Shift(pos, nullPos), Shift(actual,nullPos)])
+            if actual[1]+dy == 0 and board[pos] == Field.HU:
+                if humanFigure(board[actual]) and empty(board[Next]):
+                    pawnBeatsTable.append(toClear + [Shift(actual,nullPos), Shift(begin, nullPos), Shift(HUkingPos, Next)])
+                    return
+                    #res.append([, Shift(pos, nullPos), Shift(actual,nullPos)])
 
-            if actual[1]+dy == 7:
-                if humanFigure(board[actual]) and empty(board[actual[0] + dx, actual[1] + dy]):
-                    if board[pos] == Field.AI:
-                        res.append([Shift(AIkingPos, [actual[0] + dx, actual[1] + dy]), Shift(pos, nullPos),Shift(actual,nullPos)])
-    return res
+            if actual[1]+dy == 7 and board[pos] == Field.AI:
+                if humanFigure(board[actual]) and empty(board[Next]):
+                    pawnBeatsTable.append(toClear + [Shift(actual,nullPos), Shift(begin, nullPos), Shift(AIkingPos, Next)])
+                    return
+                    #res.append([Shift(AIkingPos, [next]), Shift(pos, nullPos),Shift(actual,nullPos)])
+
+    if possibleAttack == 0 and begin != pos:
+        toClear.append(Shift(begin, pos))
+        pawnBeatsTable.append(toClear)
 
 
 def pawnMoves(board, pos):
