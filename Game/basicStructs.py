@@ -285,17 +285,18 @@ def pawnMoves(board, pos):
     res = []
     for dx, dy in [(-1, 1), (1, 1)]:
         actual = [pos[0] + dx, pos[1] + dy]
-        if 0 <= actual[0] <= 7 and 0 <= actual[1] <= 6:
-            if empty(board[actual]):
-                res.append([Shift(pos, actual)])
-        if actual[1] == 0:
-            if empty(board[actual]):
-                if board[pos] == Field.HU:
-                    res.append([Shift(HUkingPos, actual), Shift(pos, nullPos)])
-        if actual[1] == 7:
-            if empty(board[actual]):
-                if board[pos] == Field.AI:
-                    res.append([Shift(AIkingPos, actual), Shift(pos, nullPos)])
+        if 0 <= actual[0] <= 7:
+            if 0 <= actual[1] <= 6:
+                if empty(board[actual]):
+                    res.append([Shift(pos, actual)])
+            if actual[1] == 0:
+                if empty(board[actual]):
+                    if board[pos] == Field.HU:
+                        res.append([Shift(HUkingPos, actual), Shift(pos, nullPos)])
+            if actual[1] == 7:
+                if empty(board[actual]):
+                    if board[pos] == Field.AI:
+                        res.append([Shift(AIkingPos, actual), Shift(pos, nullPos)])
 
     return res
 
