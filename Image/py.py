@@ -17,10 +17,10 @@ def calc(x,y):
         print "NO ONE"
 
 
-def sum(a,b):
+def sum_pixels(a, b):
     global img
     c = 0
-    x = 0;
+    x = 0
     for i in range(0,2):
         if a[i] > b[i]:
             (a[i],b[i]) = (b[i],a[i])
@@ -28,7 +28,7 @@ def sum(a,b):
         for i in range(a[1], b[1]):
             #print "A:", img[i][j
             for l in range(0,3):
-                c += img[i][j][l];
+                c += img[i][j][l]
             x += 1
             #print img[i][j] 
     #print "C = ",c," x = ", x
@@ -42,18 +42,18 @@ def mouseEvent(e,x,y,a,b):
 
     if e == 4:
         if constuctingRect == 0:
-            constuctingRect = 1;
+            constuctingRect = 1
             rectangles.append([[x,y], [x,y]])
         else:
-            constuctingRect = 0;
-            rectangles[-1][-1] = [x,y];
+            constuctingRect = 0
+            rectangles[-1][-1] = [x, y]
             print "-------------------"
             for i in rectangles:
-                print i, sum(i[0],i[1])
-            
+                print i, sum_pixels(i[0], i[1])
+
     if constuctingRect == 1:
-        rectangles[-1][-1] = [x,y];
-        
+        rectangles[-1][-1] = [x, y]
+
     drawit(img.copy())
             
 
@@ -67,8 +67,6 @@ def drawit(img):
             
     imshow("a",img)
 
-
-global img
 img = imread("D:\\b.jpg")
 namedWindow("a")
 setMouseCallback("a",mouseEvent,0)
@@ -77,8 +75,7 @@ setMouseCallback("a",mouseEvent,0)
 while True:
     drawit(img)
     if waitKey(0) != -1:
-        break;
-
+        break
 
 destroyWindow("a")
 print t

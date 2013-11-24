@@ -12,7 +12,7 @@ def searchForPawn(img):
 
     if len(circles) == 0:
         print "NO_PAWN"
-        return 0;
+        return 0
     print circles
     circles = np.uint16(np.around(circles))
     i = circles[0][0]
@@ -22,15 +22,15 @@ def searchForPawn(img):
     x = i[0]
     y = i[1]
     cv2.rectangle(img, (x-d,y-d),(x+d,y+d),(0,255,0))
-    sum = [0.0, 0.0, 0.0]
+    sums = [0.0, 0.0, 0.0]
     divi = 0
     for row in img2[x-d:x+d,y-d:y+d]:
         for px in row:
-            sum += px
+            sums += px
             divi += 1
-        
-    sum /= divi
-    suma = sum[0] + sum[1] + sum[2];
+
+    sums /= divi
+    suma = sums[0] + sums[1] + sums[2]
     print "KOLOR: ",suma
 
     if suma > 300:

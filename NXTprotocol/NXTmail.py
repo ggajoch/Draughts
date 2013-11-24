@@ -1,5 +1,3 @@
-import sys
-import itertools
 from serial import Serial
 
 
@@ -25,7 +23,7 @@ class sender:
         for i in Mess:
             self.sendByte(i)
 
-        length = self.readByte() + 256 * self.readByte();
+        length = self.readByte() + 256 * self.readByte()
         r = ""
         for i in xrange(length):
             r += self.readByte()

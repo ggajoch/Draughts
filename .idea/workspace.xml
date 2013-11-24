@@ -3,7 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="9a62f60b-1eaf-4646-b5ad-2ab78c745018" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Game/AIlogic.py" afterPath="$PROJECT_DIR$/Game/AIlogic.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NXTprotocol/NXTmail.py" afterPath="$PROJECT_DIR$/NXTprotocol/NXTmail.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Game/basicStructs.py" afterPath="$PROJECT_DIR$/Game/basicStructs.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Image/detectCircle.py" afterPath="$PROJECT_DIR$/Image/detectCircle.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Image/imageProcess.py" afterPath="$PROJECT_DIR$/Image/imageProcess.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Image/py.py" afterPath="$PROJECT_DIR$/Image/py.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Image/splitBoard.py" afterPath="$PROJECT_DIR$/Image/splitBoard.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Draughts.iws" />
@@ -30,36 +35,84 @@
     <favorites_list name="Draughts" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf>
-          <file leaf-file-name="AIlogic.py" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Game/AIlogic.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="120" column="4" selection-start="3246" selection-end="3246" vertical-scroll-proportion="0.2590799" vertical-offset="1933" max-vertical-offset="2805">
-                  <folding>
-                    <element signature="e#0#26#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="basicStructs.py" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Game/basicStructs.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="93" column="36" selection-start="2669" selection-end="2669" vertical-scroll-proportion="3.943299" vertical-offset="51" max-vertical-offset="5117">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="AIlogic.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Game/AIlogic.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="136" column="42" selection-start="3597" selection-end="3597" vertical-scroll-proportion="0.0" vertical-offset="2134" max-vertical-offset="2805">
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="py.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Image/py.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="34" column="11" selection-start="736" selection-end="736" vertical-scroll-proportion="0.0" vertical-offset="559" max-vertical-offset="1513">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="detectCircle.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Image/detectCircle.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="10" selection-start="804" selection-end="804" vertical-scroll-proportion="0.0" vertical-offset="185" max-vertical-offset="1309">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="imageProcess.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Image/imageProcess.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="6" selection-start="667" selection-end="667" vertical-scroll-proportion="0.0" vertical-offset="236" max-vertical-offset="1615">
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="splitBoard.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Image/splitBoard.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="57" column="15" selection-start="1476" selection-end="1476" vertical-scroll-proportion="0.0" vertical-offset="901" max-vertical-offset="2091">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NXTmail.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/NXTprotocol/NXTmail.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="8" selection-start="161" selection-end="161" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1088">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="x" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Game/x">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="0" selection-start="494" selection-end="494" vertical-scroll-proportion="0.0" vertical-offset="219" max-vertical-offset="6426">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="basicStructs.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Game/basicStructs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="71" column="25" selection-start="1292" selection-end="1292" vertical-scroll-proportion="0.3511811" vertical-offset="984" max-vertical-offset="5270">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -67,6 +120,11 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Grzegorz Gajoch" />
+      </list>
+    </option>
     <option name="SYNC_SETTING" value="DONT" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -79,6 +137,10 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/Game/basicStructs.py" />
+        <option value="$PROJECT_DIR$/Image/detectCircle.py" />
+        <option value="$PROJECT_DIR$/Image/imageProcess.py" />
+        <option value="$PROJECT_DIR$/Image/py.py" />
+        <option value="$PROJECT_DIR$/Image/splitBoard.py" />
         <option value="$PROJECT_DIR$/Game/AIlogic.py" />
       </list>
     </option>
@@ -395,7 +457,11 @@
       <created>1385253208891</created>
       <updated>1385253208891</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Game template added. Algotithm won for first time!">
+      <created>1385258070825</created>
+      <updated>1385258070825</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -422,25 +488,25 @@
     <frame x="2552" y="190" width="1296" height="1040" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972136" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972136" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289183" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14140625" sideWeight="0.49889624" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3513932" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.50110376" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22058824" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972136" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14140625" sideWeight="0.7295806" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39955848" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27041942" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -451,7 +517,10 @@
       <TodoPanelSettings />
     </option>
     <MESSAGE value="Multiple beats added." />
-    <option name="LAST_COMMIT_MESSAGE" value="Multiple beats added." />
+    <MESSAGE value="Game template added. Algotithm won for first time!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Game template added. Algotithm won for first time!" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -461,24 +530,68 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="28" column="26" selection-start="647" selection-end="647" vertical-scroll-proportion="0.0" vertical-offset="2522" max-vertical-offset="3077">
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Game/basicStructs.py">
+    <entry file="file://$PROJECT_DIR$/Game/x">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="36" selection-start="2669" selection-end="2669" vertical-scroll-proportion="3.943299" vertical-offset="51" max-vertical-offset="5117">
+        <state line="23" column="0" selection-start="494" selection-end="494" vertical-scroll-proportion="0.0" vertical-offset="219" max-vertical-offset="6426">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Image/detectCircle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="10" selection-start="804" selection-end="804" vertical-scroll-proportion="0.0" vertical-offset="185" max-vertical-offset="1309">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Image/imageProcess.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="6" selection-start="667" selection-end="667" vertical-scroll-proportion="0.0" vertical-offset="236" max-vertical-offset="1615">
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NXTprotocol/NXTmail.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="8" selection-start="161" selection-end="161" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1088">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Image/splitBoard.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="15" selection-start="1476" selection-end="1476" vertical-scroll-proportion="0.0" vertical-offset="901" max-vertical-offset="2091">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Image/py.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="11" selection-start="736" selection-end="736" vertical-scroll-proportion="0.0" vertical-offset="559" max-vertical-offset="1513">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Game/AIlogic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="120" column="4" selection-start="3246" selection-end="3246" vertical-scroll-proportion="0.2590799" vertical-offset="1933" max-vertical-offset="2805">
+        <state line="136" column="42" selection-start="3597" selection-end="3597" vertical-scroll-proportion="0.0" vertical-offset="2134" max-vertical-offset="2805">
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Game/basicStructs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="71" column="25" selection-start="1292" selection-end="1292" vertical-scroll-proportion="0.3511811" vertical-offset="984" max-vertical-offset="5270">
+          <folding />
         </state>
       </provider>
     </entry>

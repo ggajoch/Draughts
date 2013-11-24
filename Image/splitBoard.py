@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 
+#noinspection PyTrailingSemicolon
 def searchForPawn(img):
     #global img
     #img2 = cv2.imread(r"C:\Users\rexina\Dropbox\AGH\MiTP\cz.jpg")
@@ -10,9 +11,10 @@ def searchForPawn(img):
 
     circles = cv2.HoughCircles(img2,cv2.cv.CV_HOUGH_GRADIENT,1,20,param1=43,param2=28,minRadius=0,maxRadius=0)
 
-    if circles == None:
+    if circles is None:
         print "NO_PAWN"
-        return 0;
+        #noinspection PyTrailingSemicolon
+        return 0
     print circles
     circles = np.uint16(np.around(circles))
     i = circles[0][0]
@@ -22,20 +24,20 @@ def searchForPawn(img):
     x = i[0]
     y = i[1]
     cv2.rectangle(img, (x-d,y-d),(x+d,y+d),(0,255,0))
-    sum = [0.0, 0.0, 0.0]
+    sums = [0.0, 0.0, 0.0]
     divi = 0
     for row in img2[x-d:x+d,y-d:y+d]:
         for px in row:
-            sum += px
+            sums += px
             divi += 1
         
     #if divi != 0: sum = [i/divi for i in sum]
     try:
-        sum /= divi
+        sums /= divi
     except TypeError:
-        print "|!!!| ",sum,divi
-        
-    suma = sum[0] + sum[1] + sum[2];
+        print "|!!!| ", sums, divi
+
+    suma = sums[0] + sums[1] + sums[2]
     print "KOLOR: ",suma
 
     if suma > 300:
@@ -54,7 +56,9 @@ def searchForPawn(img):
     #cv2.destroyAllWindows()
 
 drawing = False
-points = []
+ix = iy = 0
+
+
 def mouseEvent(event, x, y, flags, param):
     global ix, iy, drawing,img,points
     if event == cv2.EVENT_LBUTTONDOWN:
@@ -80,7 +84,7 @@ dst = cv2.warpPerspective(img,M,(600,600))
 points = []
 for i in range(1,602,75):
     for j in range(1,602,75):
-        points.append([j,i]);
+        points.append([j, i])
 print points
 
 print len(points)
@@ -109,8 +113,8 @@ for i in points:
 while True:
     cv2.imshow('image',dst)
     if cv2.waitKey(1) & 0xFF == 27:
-        break;
-    
-print points;
+        break
+
+print points
 cv2.destroyAllWindows()
 

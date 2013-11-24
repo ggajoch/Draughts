@@ -69,7 +69,7 @@ class Board:
         return ret
 
     def set(self, x, y, what):
-        self[x, y] = what;
+        self[x, y] = what
 
     def copy(self):
         return copy.deepcopy(self)
@@ -103,10 +103,10 @@ class Board:
             elif basic.src.x == AIkingPos[0]:
                 self[basic.dst.x, basic.dst.y] = Field.AI_KING
             elif basic.dst.x == nullPos[0]: #to /dev/null
-                self[basic.src.x, basic.src.y] = Field.EMPTY;
+                self[basic.src.x, basic.src.y] = Field.EMPTY
             else:
                 self[basic.dst.x, basic.dst.y] = self[basic.src.x, basic.src.y]
-                self[basic.src.x, basic.src.y] = Field.EMPTY;
+                self[basic.src.x, basic.src.y] = Field.EMPTY
 
     def possibleMoves(self):
         moves = []
@@ -181,7 +181,6 @@ def addToList(_list, _num):
 def kingBeats(board, pos):
     global pawnBeatsTable
     pawnBeatsTable = []
-    res = []
     for dx, dy in [(-1, -1), (-1, 1), (1, -1), (1, 1)]:
         actual = [pos[0] + dx, pos[1] + dy]
         while 1 <= actual[0] <= 6 and 1 <= actual[1] <= 6:
@@ -229,7 +228,7 @@ def kingMoves(board, pos):
         actual = [pos[0] + dx, pos[1] + dy]
         while 0 <= actual[0] <= 7 and 0 <= actual[1] <= 7:
             if AIFigure(board[actual]):
-                break;
+                break
             if empty(board[actual]):
                 res.append([Shift(pos, actual)])
             actual = [actual[0] + dx, actual[1] + dy]
@@ -242,7 +241,7 @@ pawnBeatsTable = []
 def pawnBeats(board, pos):
     global pawnBeatsTable
     pawnBeatsTable = []
-    pawnBeatsHelper(board, pos, pos, []);
+    pawnBeatsHelper(board, pos, pos, [])
     return pawnBeatsTable
 
 

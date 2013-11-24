@@ -1,4 +1,3 @@
-import copy
 import sys
 
 from basicStructs import *
@@ -54,21 +53,21 @@ def alfabeta(board, depth, maximizingPlayer, alfa, beta):
         #print "MAXI"
     #else:
         #print "MINI"
-    tt = copy.copy(nodes)
+    #tt = copy.copy(nodes)
     #print "INPUT Node nr",nodes,"depth = ",depth
 
     tmp = board.gameWon()
     if tmp != 0:
         if maximizingPlayer:
             #print "OUT Node nr",tt,"points =",9e52*tmp
-            return (9e52 * tmp, None)
+            return [9e52 * tmp, None]
         else:
             #print "OUT Node nr",tt,"points =",-9e52*tmp
-            return (-9e52 * tmp, None)
+            return [-9e52 * tmp, None]
     if depth == 0:
         #print "OUT Node nr",tt,"points = ",boardPoints(board)
-        return (boardPoints(board), None)
-    if maximizingPlayer == True:
+        return [boardPoints(board), None]
+    if maximizingPlayer:
         bestMove = None
         #alfa = -9e99
         mov = board.possibleMoves()
@@ -90,7 +89,7 @@ def alfabeta(board, depth, maximizingPlayer, alfa, beta):
         #print "OUT Node nr",tt,"points = ",alfa
         #if depth == 5:
             #print childs
-        return (alfa, bestMove)
+        return [alfa, bestMove]
     else:
         bestMove = None
         #beta = 9e99
@@ -111,14 +110,15 @@ def alfabeta(board, depth, maximizingPlayer, alfa, beta):
             if alfa >= beta:
                 break      
         #print "OUT Node nr",tt,"points = ",beta
-        return (beta, bestMove)
+        return [beta, bestMove]
 
-def minimaks(board, depth, maximizingPlayer):
+
+def minimaks(board, depth):
     return alfabeta(board, depth, True, -9e99, 9e99)
 
 
 if __name__ == "__main__":
-    a = Board();
+    a = Board()
 
     for i in range(0, 8, 2):
         a.set(i, 0, Field.AI)
@@ -135,7 +135,7 @@ if __name__ == "__main__":
     while a.gameWon() == 0:
         turns += 1
         sys.stdout.write("Turn "+str(turns))
-        res = minimaks(copy.deepcopy(a), 6, True)
+        res = minimaks(copy.deepcopy(a), 6)
         print "White:",res[1]
         a.executeMove(res[1])
 
