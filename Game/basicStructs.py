@@ -152,6 +152,24 @@ class Board:
             return 1"""
         return 0
 
+    def equal(self, board2):
+        for i in xrange(8):
+            for j in xrange(8):
+                if self[i, j] != board2[i, j]:
+                    return False
+        return True
+
+    def correctHumanMove(self, board2):
+        Template = self.copy()
+        Template.swapSides()
+        for move in Template.possibleMoves():
+            Actual = Template.copy()
+            Actual.executeMove(move)
+            Actual.swapSides()
+            if Actual.equal(board2):
+                return True
+        return False
+
 
 class Shift:
     src = Field([-2, -2])

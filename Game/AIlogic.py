@@ -7,12 +7,12 @@ from basicStructs import *
 #CONSTANTS:
 
 FlatLevels = [ [[x,y] for x in xrange(8) for y in range(i,i+2)] for i in [0,2,4,6]]
-PointsForFlatLevels = [2,4,8,20]
+PointsForFlatLevels = [2, 4, 8, 15]
 PointsForHuman = PointsForFlatLevels[:]
 PointsForHuman.reverse()
 
 PawnPoints = 5
-KingPoints = 50
+KingPoints = 80
 
 INF = 9e99
 
@@ -117,6 +117,16 @@ def minimaks(board, depth):
     return alfabeta(board, depth, True, -9e99, 9e99)
 
 
+def readInt(a):
+    while True:
+        try:
+            x = int(raw_input(a))
+            break
+        except ValueError:
+            print "Oops!  That was no valid number.  Try again..."
+    return int(x)
+
+
 if __name__ == "__main__":
     a = Board()
 
@@ -142,15 +152,25 @@ if __name__ == "__main__":
         if a.gameWon() != 0: 
             break
 
-        m = input("Moves? ")
-        for i in xrange(m):
-            x = input("SrcX? ")
-            b = input("SrcY? ")
-            c = input("DstX? ")
-            d = input("DstY? ")
+        ok = 0
+        while ok == 0:
+            After = a.copy()
 
-            Move = [Shift([x, b], [c, d])]
-            a.executeMove(Move)
+            m = readInt("Moves? ")
+            for i in xrange(m):
+                x = readInt("SrcX? ")
+                b = readInt("SrcY? ")
+                c = readInt("DstX? ")
+                d = readInt("DstY? ")
+                Move = [Shift([x, b], [c, d])]
+                After.executeMove(Move)
+
+            if a.correctHumanMove(After):
+                print "OK"
+                a = After
+                ok = 1
+            else:
+                print "Bad Move! Try again!"
 
     print a
     if a.gameWon() == 1:
