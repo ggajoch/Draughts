@@ -4,67 +4,88 @@ import copy
 import numpy as np
 
 
-#noinspection PyTrailingSemicolon
-def searchForPawn(img):
-    """function returns:
+class Field:
+    def __init__(self,Image,xx,yy):
+        self.x = xx
+        self.y = yy
+        self.img = Image
+        
+
+class ImageProcess:
+    def __init__(self):
+        self.param1 = [[29 for i in xrange(8)] for j in xrange(8)]
+        self.param2 = [[20 for i in xrange(8)] for j in xrange(8)]
+        self.fields1 = self.fields2 = []
+
+
+    def calibratation(self,fieldList):
+        for field in fieldList:
+            for p1,p2 in [(a,b) for a in xrange(10,50) for b in xrange(10,50)]:
+                self.param1[field.x][field.y] = p1
+                self.param2[field.x][field.y] = p1
+                if self.searchForPawn(field.img, [field.x, field.y]) == 1 and self.searchForPawn(field.img, [field.x, field.y]) == -1:
+                    print "Calibrated field",field.x,field.y,"values",p1,p2
+                    break
+                    
+
+    def searchForPawn(self, img, pos):
+        """function returns:
         0 - no figure
         1 - white
         -1 - black"""
-    #global img
-    #img2 = cv2.imread(r"C:\Users\rexina\Dropbox\AGH\MiTP\cz.jpg")
-    img2 = cv2.cvtColor (img, cv2.COLOR_BGR2GRAY)
-    img2 = cv2.medianBlur(img2,5)
-    #cimg = cv2.cvtColor(img,cv2.COLOR_GRAY2BGR)
+        #global img
+	#img2 = cv2.imread(r"C:\Users\rexina\Dropbox\AGH\MiTP\cz.jpg")
+        img2 = cv2.cvtColor (img, cv2.COLOR_BGR2GRAY)
+        img2 = cv2.medianBlur(img2,5)
+        #cimg = cv2.cvtColor(img,cv2.COLOR_GRAY2BGR)
 
-    circles = cv2.HoughCircles(img2, cv2.cv.CV_HOUGH_GRADIENT, 1, 20, param1=29, param2=26, minRadius=15, maxRadius=0)
+        circles = cv2.HoughCircles(img2, cv2.cv.CV_HOUGH_GRADIENT, 1, 20, param1=self.param1[pos[0]][pos[1]], param2=self.param2[pos[0]][pos[1]], minRadius=15, maxRadius=0)
 
-    if circles is None:
-        print "NO_PAWN"
-        #noinspection PyTrailingSemicolon
-        return 0
-    print circles
-    circles = np.uint16(np.around(circles))
-    #if len(circles) > 1:
-    #   return 0
-    i = circles[0][0]
+        if circles is None or len(circles[0]) > 1:
+            #print "NO_PAWN"
+            return 0
+        #print circles
+        circles = np.uint16(np.around(circles))
+        i = circles[0][0]
 
 
-    d = int(i[2]/1.41)
-    x = i[0]
-    y = i[1]
-    cv2.rectangle(img, (x-d,y-d),(x+d,y+d),(0,255,0))
-    sums = [0.0, 0.0, 0.0]
-    divi = 0
-    for row in img2[x-d:x+d,y-d:y+d]:
-        for px in row:
-            sums += px
-            divi += 1
+        d = int(i[2]/1.41)
+        x = i[0]
+        y = i[1]
+        cv2.rectangle(img, (x-d,y-d),(x+d,y+d),(0,255,0))
+        sums = [0.0, 0.0, 0.0]
+        divi = 0
+        for row in img2[x-d:x+d,y-d:y+d]:
+            for px in row:
+                sums += px
+                divi += 1
+		
+	    #if divi != 0: sum = [i/divi for i in sum]
+	    try:
+		sums /= divi
+	    except TypeError:
+                print circles
+		print "|!!!| ", sums, divi
+
+	    suma = sums[0] + sums[1] + sums[2]
+	    #print "KOLOR: ",suma
+
+	    if suma > 300:
+		#print "WHITE PAWN"
+		cv2.circle(img,(i[0],i[1]),i[2],(0,255,0),2)
+		cv2.circle(img,(i[0],i[1]),2,(0,0,255),3)
+		return 1
+	    else:
+		#print "BLACK PAWN"
+		cv2.circle(img,(i[0],i[1]),i[2],(0,0,255),2)
+		cv2.circle(img,(i[0],i[1]),2,(0,0,255),3)
+		return -1
+
         
-    #if divi != 0: sum = [i/divi for i in sum]
-    try:
-        sums /= divi
-    except TypeError:
-        print "|!!!| ", sums, divi
 
-    suma = sums[0] + sums[1] + sums[2]
-    print "KOLOR: ",suma
-
-    if suma > 300:
-        print "WHITE PAWN"
-        cv2.circle(img,(i[0],i[1]),i[2],(0,255,0),2)
-        cv2.circle(img,(i[0],i[1]),2,(0,0,255),3)
-        return 1
-    else:
-        print "BLACK PAWN"
-        cv2.circle(img,(i[0],i[1]),i[2],(0,0,255),2)
-        cv2.circle(img,(i[0],i[1]),2,(0,0,255),3)
-        return -1
-
-
-
-        #cv2.imshow('detected circles',img)
-    #cv2.waitKey(0)
-    #cv2.destroyAllWindows()
+		#cv2.imshow('detected circles',img)
+	    #cv2.waitKey(0)
+	    #cv2.destroyAllWindows()
 
 drawing = False
 ix = iy = 0
@@ -119,15 +140,29 @@ if __name__ == "__main__":
 
     print dic[0, 0], dic[1, 1]
 
-    for i in range(0, 8):
-        for j in range(0, 8):
+    fieldList = []
+
+#    for i in range(0, 8):
+#        for j in range(0, 8):
+    for i in range(0,8,2):
+        for j in [0,6]:
             x1 = dic[i, j][0]
             y1 = dic[i, j][1]
             x2 = dic[i + 1, j + 1][0]
             y2 = dic[i + 1, j + 1][1]
-            #cv2.imshow('image',img[y1:y2,x1:x2])
-            searchForPawn(dst[y1:y2, x1:x2])
-            #cv2.waitKey(0)
+            fieldList.append(Field(dst[y1:y2, x1:x2], i, j))
+
+    for i in range(1,8,2):
+        for j in [1,7]:
+            x1 = dic[i, j][0]
+            y1 = dic[i, j][1]
+            x2 = dic[i + 1, j + 1][0]
+            y2 = dic[i + 1, j + 1][1]
+            fieldList.append(Field(dst[y1:y2, x1:x2], i, j))
+
+
+    process = ImageProcess()
+    process.calibratation(fieldList)
 
     for i in points:
         cv2.circle(dst, tuple(i), 3, (0, 0, 255), -1)
