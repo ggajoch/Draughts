@@ -2,11 +2,9 @@ import sys
 
 from basicStructs import *
 
-#from gameLogic import *
-
 #CONSTANTS:
 
-FlatLevels = [ [[x,y] for x in xrange(8) for y in range(i,i+2)] for i in [0,2,4,6]]
+FlatLevels = [[[x, y] for x in xrange(8) for y in range(i, i + 2)] for i in [0, 2, 4, 6]]
 PointsForFlatLevels = [2, 4, 8, 15]
 PointsForHuman = PointsForFlatLevels[:]
 PointsForHuman.reverse()
@@ -16,11 +14,12 @@ KingPoints = 80
 
 INF = 9e99
 
+
 def boardPoints(board):
     res = 0
     tmp = board.gameWon()
     if tmp != 0:
-        return tmp*9e99
+        return tmp * 9e99
     for pos in boardCoords:
         if board[pos] == Field.AI:
             res += PawnPoints
@@ -30,7 +29,7 @@ def boardPoints(board):
             res -= PawnPoints
         elif board[pos] == Field.HU_KING:
             res -= KingPoints
-    
+
     for i in xrange(len(FlatLevels)):
         for field in FlatLevels[i]:
             if board[field] == Field.HU:
@@ -39,7 +38,9 @@ def boardPoints(board):
                 res += PointsForFlatLevels[i]
     return res
 
+
 nodes = 0
+
 
 def alfabeta(board, depth, maximizingPlayer, alfa, beta):
     #print "(",depth,alfa,beta,")"
@@ -50,9 +51,9 @@ def alfabeta(board, depth, maximizingPlayer, alfa, beta):
     nodes += 1
 
     #if maximizingPlayer:
-        #print "MAXI"
+    #print "MAXI"
     #else:
-        #print "MINI"
+    #print "MINI"
     #tt = copy.copy(nodes)
     #print "INPUT Node nr",nodes,"depth = ",depth
 
@@ -72,13 +73,13 @@ def alfabeta(board, depth, maximizingPlayer, alfa, beta):
         #alfa = -9e99
         mov = board.possibleMoves()
         #if len(mov) == 1:
-         #   return (alfa, mov[0])
+        #   return (alfa, mov[0])
         for i in mov:
             board2 = copy.deepcopy(board)
             board2.executeMove(i)
             board2.swapSides()
             #print "moving",i
-            val = alfabeta(board2, depth-1, False, alfa, beta)[0]
+            val = alfabeta(board2, depth - 1, False, alfa, beta)[0]
             #print "Max|",val,i,"|"
             #childs.append((val, i))
             if val > alfa:
@@ -86,9 +87,9 @@ def alfabeta(board, depth, maximizingPlayer, alfa, beta):
                 bestMove = i
             if alfa >= beta:
                 break
-        #print "OUT Node nr",tt,"points = ",alfa
-        #if depth == 5:
-            #print childs
+                #print "OUT Node nr",tt,"points = ",alfa
+                #if depth == 5:
+                #print childs
         return [alfa, bestMove]
     else:
         bestMove = None
@@ -102,14 +103,14 @@ def alfabeta(board, depth, maximizingPlayer, alfa, beta):
             board2.executeMove(i)
             board2.swapSides()
             #print "moving",i
-            val = alfabeta(board2, depth-1, True, alfa, beta)[0]
+            val = alfabeta(board2, depth - 1, True, alfa, beta)[0]
             #print "Min|",val,i,"|"
             if val < beta:
                 beta = val
                 bestMove = i
             if alfa >= beta:
-                break      
-        #print "OUT Node nr",tt,"points = ",beta
+                break
+                #print "OUT Node nr",tt,"points = ",beta
         return [beta, bestMove]
 
 
@@ -144,12 +145,12 @@ if __name__ == "__main__":
     turns = 0
     while a.gameWon() == 0:
         turns += 1
-        sys.stdout.write("Turn "+str(turns))
+        sys.stdout.write("Turn " + str(turns))
         res = minimaks(copy.deepcopy(a), 6)
-        print "White:",res[1]
+        print "White:", res[1]
         a.executeMove(res[1])
 
-        if a.gameWon() != 0: 
+        if a.gameWon() != 0:
             break
 
         ok = 0
