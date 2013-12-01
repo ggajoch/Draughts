@@ -1,7 +1,7 @@
 import cv2
 import copy
 import sys
-
+import os
 import numpy as np
 
 sys.path.append("../Game")
@@ -15,12 +15,30 @@ class Field:
         self.img = Image
 
 
+def show_image(img):
+    cv2.namedWindow('image')
+    cv2.imshow('image', img)
+    a = cv2.waitKey(0)
+    cv2.destroyAllWindows()
+    return a
+
+
 class ImageProcess:
     def __init__(self):
-        self.param1 = [[33 for i in xrange(8)] for j in xrange(8)]
-        self.param2 = [[20 for i in xrange(8)] for j in xrange(8)]
+        self.param1 = [[90 for i in xrange(8)] for j in xrange(8)]
+        self.param2 = [[25 for i in xrange(8)] for j in xrange(8)]
         self.fields1 = self.fields2 = []
         self.FieldTable = [[1 for j in xrange(8)] for i in xrange(8)]
+        self.Threshold = [[0, 171.75333333333333, 0, 249.23580161476355, 0, 255.31666666666666, 0, 165.56258382642997],
+                          [229.97745098039218, 0, 202.4783262914541, 0, 235.73240885416666, 0, 204.73370442708332, 0],
+                          [0, 208.91502551020409, 0, 273.07461734693879, 0, 208.59990646258504, 0, 202.41793619791667],
+                          [345.77444010416667, 0, 295.56166666666667, 0, 253.69046768707483, 0, 212.70172619047619, 0],
+                          [0, 209.45500000000001, 0, 303.82750850340136, 0, 278.66341477997446, 0, 384.06052273850719],
+                          [187.90636904761905, 0, 226.0088350340136, 0, 329.70839285714288, 0, 267.44348307291665, 0],
+                          [0, 270, 0, 321.7839880952381, 0, 323.71492346938771, 0, 232.80803571428572],
+                          [220, 0, 227.62666666666667, 0, 207.76106119791666, 0, 209.5773477359694,
+                           0]]#[[0 for i in xrange(8)] for j in xrange(8)]
+        self.splitPoints = [[396, 114], [840, 147], [378, 575], [819, 596]]
 
     def calibratation(self, fieldList):
         for field in fieldList:
@@ -32,6 +50,18 @@ class ImageProcess:
                     print "Calibrated field", field.x, field.y, "values", p1, p2
                     break
 
+    def addToCalibrate(self, img):
+        self.loadImage(img)
+        self.imageSplit()
+        result = [[0 for i in xrange(8)] for j in xrange(8)]
+        for i in xrange(8):
+            for j in xrange(8):
+                if (i + j) % 2 == 1:
+                    print [i, j]
+                    self.Threshold[i][j] += (self.searchForPawn(self.FieldTable[i][j], [i, j], True) / 2.0)
+        print self.Threshold
+
+
     def loadImage(self, image):
         self.img = image
 
@@ -42,25 +72,25 @@ class ImageProcess:
             cv2.circle(MouseImgCopy, (x, y), 4, (0, 255, 0), -1)
 
 
-    def imageSplit(self, points=[]):
-        #points = [[80, 138], [427, 122], [81, 494], [439, 489]]
+    def imageSplit(self):
         global MouseImgCopy, MousePoints
-        MousePoints = points
+        MousePoints = self.splitPoints
         MouseImgCopy = copy.deepcopy(self.img)
         cv2.namedWindow('image')
         cv2.setMouseCallback('image', self.mouseEvent)
         while True:
             cv2.imshow('image', MouseImgCopy)
-            if len(points) == 4 or cv2.waitKey(1) & 0xFF == 27:
+            if len(MousePoints) == 4 or cv2.waitKey(1) & 0xFF == 27:
                 break
-        print points
+        print MousePoints
+
         cv2.destroyAllWindows()
 
         rows, cols, ch = self.img.shape
-        pts1 = np.float32(points)
+        pts1 = np.float32(MousePoints)
         pts2 = np.float32([[0, 0], [600, 0], [0, 600], [600, 600]])
         M = cv2.getPerspectiveTransform(pts1, pts2)
-        dst = cv2.warpPerspective(self.img, M, (600, 600))
+        self.trimmed = cv2.warpPerspective(self.img, M, (600, 600))
         points = []
         for i in range(1, 602, 75):
             for j in range(1, 602, 75):
@@ -78,28 +108,29 @@ class ImageProcess:
                     y1 = dic[i, j][1]
                     x2 = dic[i + 1, j + 1][0]
                     y2 = dic[i + 1, j + 1][1]
-                    self.FieldTable[i][j] = dst[y1:y2, x1:x2]
-
-        cv2.namedWindow('image')
-        #cv2.circle(dst, tuple(i), 3, (0, 0, 255), -1)
-        cv2.imshow('image', self.img)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
-
+                    self.FieldTable[i][j] = self.trimmed[y1:y2, x1:x2]
+        for i in xrange(8):
+            for j in xrange(8):
+                x1 = dic[i, j][0]
+                y1 = dic[i, j][1]
+                x2 = dic[i + 1, j + 1][0]
+                y2 = dic[i + 1, j + 1][1]
+                cv2.circle(self.trimmed, (x1, y1), 2, (0, 0, 255))
+                cv2.circle(self.trimmed, (x2, y2), 2, (0, 0, 255))
 
     def frame_table(self, image, AIIsWhite):
         self.img = copy.deepcopy(image)
-        self.imageSplit([[70, 150], [388, 158], [65, 462], [383, 469]])
-        cv2.namedWindow('image')
+        self.imageSplit()
 
         result = [[0 for i in xrange(8)] for j in xrange(8)]
         for i in xrange(8):
             for j in xrange(8):
                 if (i + j) % 2 == 1:
-                    print [i, j]
+                    #print [i, j]
                     result[i][j] = self.searchForPawn(self.FieldTable[i][j], [i, j])
 
         board = BS.Board()
+        rotatedBoard = BS.Board()
         if AIIsWhite:
             WhiteConst = BS.Field.AI
             BlackConst = BS.Field.HU
@@ -107,7 +138,6 @@ class ImageProcess:
             WhiteConst = BS.Field.HU
             BlackConst = BS.Field.AI
 
-        self.imgWithDots = copy.deepcopy(image)
         for i in xrange(8):
             for j in xrange(8):
                 if result[i][j] == 1:
@@ -117,15 +147,13 @@ class ImageProcess:
                 else:
                     board[i, j] = BS.Field.EMPTY
 
-        while True:
-            cv2.imshow('image', self.img)
-            if cv2.waitKey(1) & 0xFF == 27:
-                break
-        cv2.destroyAllWindows()
+        for i in xrange(8):
+            for j in xrange(8):
+                rotatedBoard[j, 7 - i] = board[i, j]
 
-        print board
+        return rotatedBoard
 
-    def searchForPawn(self, img, pos):
+    def searchForPawn(self, img, pos, returnColorValue=False):
         """function returns:
         0 - no figure
         1 - white
@@ -142,15 +170,15 @@ class ImageProcess:
                                    minRadius=15,
                                    maxRadius=0)
 
-        print circles
+        #print circles
         if circles is None or len(circles[0]) > 1:
-            print "NO_PAWN"
+            #print "NO_PAWN"
             return 0
 
         circles = np.uint16(np.around(circles))
         i = circles[0][0]
 
-        d = int(i[2] / 1.41)
+        d = int(i[2] / 1.6)
         x = i[0]
         y = i[1]
         cv2.rectangle(img, (x - d, y - d), (x + d, y + d), (0, 255, 0))
@@ -172,13 +200,17 @@ class ImageProcess:
         suma = sums[0] + sums[1] + sums[2]
         #print "KOLOR: ",suma
 
-        if suma > 300:
-            print "WHITE PAWN"
+        if returnColorValue:
+            return suma
+
+        #print "suma =",suma
+        if suma > self.Threshold[pos[0]][pos[1]]:
+            #print "WHITE PAWN"
             cv2.circle(img, (i[0], i[1]), i[2], (0, 255, 0), 2)
             cv2.circle(img, (i[0], i[1]), 2, (0, 0, 255), 3)
 
         else:
-            print "BLACK PAWN"
+            #print "BLACK PAWN"
             cv2.circle(img, (i[0], i[1]), i[2], (0, 0, 255), 2)
             cv2.circle(img, (i[0], i[1]), 2, (0, 0, 255), 3)
 
@@ -186,7 +218,7 @@ class ImageProcess:
         #cv2.waitKey(0)
         #cv2.destroyAllWindows()
 
-        if suma > 300:
+        if suma > self.Threshold[pos[0]][pos[1]]:
             return 1
         else:
             return -1
@@ -196,11 +228,37 @@ drawing = False
 ix = iy = 0
 
 
+def take_photo():
+    os.system(r"C:\cygwin64\bin\wget.exe http://192.168.1.101:8080/photoaf.jpg -O shot.jpg")
+    img = cv2.imread(r"shot.jpg")
+    return img
 
 
 if __name__ == "__main__":
-    #os.system("wget http://192.168.137.156:8080/photoaf.jpg -O shot.jpg")
-    img = cv2.imread(r"asm.jpg")
-    imgCopy = copy.deepcopy(img)
+
     proc = ImageProcess()
-    proc.frame_table(imgCopy, True)
+    """while True:
+        img = take_photo()
+        proc.addToCalibrate(img)
+        x = show_image(proc.trimmed)
+        if x == 27:
+            break"""
+
+    print proc.Threshold
+
+    cv2.destroyAllWindows()
+    while True:
+        img = take_photo()
+        board = proc.frame_table(img, False)
+
+        cv2.namedWindow('image')
+        while True:
+            cv2.imshow('image', proc.trimmed)
+            a = cv2.waitKey(1)
+            if a & 0xFF == 27:
+                sys.exit(0)
+            if a & 0xFF == ord('a'):
+                break
+        cv2.destroyAllWindows()
+
+        print board
