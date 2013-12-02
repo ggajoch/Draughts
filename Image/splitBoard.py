@@ -25,20 +25,21 @@ def show_image(img):
 
 class ImageProcess:
     def __init__(self):
-        self.param1 = [[90 for i in xrange(8)] for j in xrange(8)]
-        self.param2 = [[25 for i in xrange(8)] for j in xrange(8)]
+        self.param1 = 70
+        self.param2 = 15
         self.fields1 = self.fields2 = []
         self.FieldTable = [[1 for j in xrange(8)] for i in xrange(8)]
-        self.Threshold = [[0, 171.75333333333333, 0, 249.23580161476355, 0, 255.31666666666666, 0, 165.56258382642997],
-                          [229.97745098039218, 0, 202.4783262914541, 0, 235.73240885416666, 0, 204.73370442708332, 0],
-                          [0, 208.91502551020409, 0, 273.07461734693879, 0, 208.59990646258504, 0, 202.41793619791667],
-                          [345.77444010416667, 0, 295.56166666666667, 0, 253.69046768707483, 0, 212.70172619047619, 0],
-                          [0, 209.45500000000001, 0, 303.82750850340136, 0, 278.66341477997446, 0, 384.06052273850719],
-                          [187.90636904761905, 0, 226.0088350340136, 0, 329.70839285714288, 0, 267.44348307291665, 0],
-                          [0, 270, 0, 321.7839880952381, 0, 323.71492346938771, 0, 232.80803571428572],
-                          [220, 0, 227.62666666666667, 0, 207.76106119791666, 0, 209.5773477359694,
+        # [todo] - do sth with treshold
+        self.Threshold = [[0, 168.6261111111111, 0, 172.33210059171597, 0, 217.72415844838923, 0, 200],
+                          [187.78032544378698, 0, 187.92987179487179, 0, 200.40472647392289, 0, 172.39933658374594, 0],
+                          [0, 209.38461538461539, 0, 204.87850817718606, 0, 189.74725714990137, 0, 171.61686390532543],
+                          [200, 0, 208.26701183431953, 0, 198.93121301775147, 0, 298.09615384615387, 0],
+                          [0, 189.03825021132715, 0, 211.66642011834318, 0, 210.86545138888889, 0, 204.1508875739645],
+                          [160.65898593165076, 0, 199.6301775147929, 0, 282.01529113247864, 0, 336.66124260355031, 0],
+                          [0, 174.03994082840237, 0, 188.14557797971258, 0, 339.61908284023667, 0, 302.1010600907029],
+                          [165.08341551610783, 0, 216.80029585798817, 0, 177.81878698224853, 0, 177.77144970414201,
                            0]]#[[0 for i in xrange(8)] for j in xrange(8)]
-        self.splitPoints = [[396, 114], [840, 147], [378, 575], [819, 596]]
+        self.splitPoints = [[344, 175], [819, 183], [352, 661], [821, 658]]
 
     def calibratation(self, fieldList):
         for field in fieldList:
@@ -57,7 +58,7 @@ class ImageProcess:
         for i in xrange(8):
             for j in xrange(8):
                 if (i + j) % 2 == 1:
-                    print [i, j]
+                    #print [i, j]
                     self.Threshold[i][j] += (self.searchForPawn(self.FieldTable[i][j], [i, j], True) / 2.0)
         print self.Threshold
 
@@ -82,7 +83,7 @@ class ImageProcess:
             cv2.imshow('image', MouseImgCopy)
             if len(MousePoints) == 4 or cv2.waitKey(1) & 0xFF == 27:
                 break
-        print MousePoints
+            #print MousePoints
 
         cv2.destroyAllWindows()
 
@@ -99,7 +100,6 @@ class ImageProcess:
         for i in range(0, 9):
             for j in range(0, 9):
                 dic[i, j] = points[9 * i + j]
-        print dic[0, 0], dic[1, 1]
 
         for i in xrange(8):
             for j in xrange(8):
@@ -161,13 +161,19 @@ class ImageProcess:
         #global img
         #img2 = cv2.imread(r"C:\Users\rexina\Dropbox\AGH\MiTP\cz.jpg")
         img2 = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        img2 = cv2.medianBlur(img2, 5)
+        img2 = cv2.medianBlur(img2, 7)
         #cimg = cv2.cvtColor(img,cv2.COLOR_GRAY2BGR)
+        edges = cv2.GaussianBlur(img2, (3, 3), 0)
+        edges = cv2.Canny(edges, 100, 100)
 
-        circles = cv2.HoughCircles(img2, cv2.cv.CV_HOUGH_GRADIENT, 1, 20,
-                                   param1=self.param1[pos[0]][pos[1]],
-                                   param2=self.param2[pos[0]][pos[1]],
-                                   minRadius=15,
+        x, dst = cv2.threshold(img2, 50, 255, cv2.THRESH_BINARY)
+        #show_image(dst)
+        #show_image(edges)
+
+        circles = cv2.HoughCircles(edges, cv2.cv.CV_HOUGH_GRADIENT, 1, 20,
+                                   param1=self.param1,
+                                   param2=self.param2,
+                                   minRadius=10,
                                    maxRadius=0)
 
         #print circles
@@ -184,7 +190,7 @@ class ImageProcess:
         cv2.rectangle(img, (x - d, y - d), (x + d, y + d), (0, 255, 0))
         sums = [0.0, 0.0, 0.0]
         divi = 0
-        for row in img2[x - d:x + d, y - d:y + d]:
+        for row in dst[x - d:x + d, y - d:y + d]:
             for px in row:
                 sums += px
                 divi += 1
@@ -202,9 +208,9 @@ class ImageProcess:
 
         if returnColorValue:
             return suma
-
+            #print pos," -> ",suma,"\t|\t",self.Threshold[pos[0]][pos[1]]
         #print "suma =",suma
-        if suma > self.Threshold[pos[0]][pos[1]]:
+        if suma > 700:#self.Threshold[pos[0]][pos[1]]:
             #print "WHITE PAWN"
             cv2.circle(img, (i[0], i[1]), i[2], (0, 255, 0), 2)
             cv2.circle(img, (i[0], i[1]), 2, (0, 0, 255), 3)
@@ -218,7 +224,7 @@ class ImageProcess:
         #cv2.waitKey(0)
         #cv2.destroyAllWindows()
 
-        if suma > self.Threshold[pos[0]][pos[1]]:
+        if suma > 700:##self.Threshold[pos[0]][pos[1]]:
             return 1
         else:
             return -1
@@ -229,7 +235,7 @@ ix = iy = 0
 
 
 def take_photo():
-    os.system(r"C:\cygwin64\bin\wget.exe http://192.168.1.101:8080/photoaf.jpg -O shot.jpg")
+    os.system(r"C:\cygwin64\bin\wget.exe http://192.168.1.101:8080/photoaf.jpg -O shot.jpg --quiet")
     img = cv2.imread(r"shot.jpg")
     return img
 

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9a62f60b-1eaf-4646-b5ad-2ab78c745018" name="Default" comment="Fix bug which makes moving to X = -1 possible.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main.py" />
+    <list default="true" id="9a62f60b-1eaf-4646-b5ad-2ab78c745018" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Game/basicStructs.py" afterPath="$PROJECT_DIR$/Game/basicStructs.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Image/splitBoard.py" afterPath="$PROJECT_DIR$/Image/splitBoard.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -18,10 +19,10 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Draughts$detectCircle.coverage" NAME="detectCircle Coverage Results" MODIFIED="1385669208032" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Image" />
     <SUITE FILE_PATH="coverage/Draughts$AIlogic.coverage" NAME="AIlogic Coverage Results" MODIFIED="1385339173809" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Game" />
-    <SUITE FILE_PATH="coverage/Draughts$basicStructs.coverage" NAME="basicStructs Coverage Results" MODIFIED="1385337188099" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Game" />
+    <SUITE FILE_PATH="coverage/Draughts$basicStructs.coverage" NAME="basicStructs Coverage Results" MODIFIED="1385929009367" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Game" />
     <SUITE FILE_PATH="coverage/Draughts$Python_Console.coverage" NAME="Python Console Coverage Results" MODIFIED="1385680621491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Draughts$main.coverage" NAME="main Coverage Results" MODIFIED="1385862746493" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Draughts$splitBoard.coverage" NAME="splitBoard Coverage Results" MODIFIED="1385862720231" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Image" />
+    <SUITE FILE_PATH="coverage/Draughts$main.coverage" NAME="main Coverage Results" MODIFIED="1385949166116" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Draughts$splitBoard.coverage" NAME="splitBoard Coverage Results" MODIFIED="1385927438189" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Image" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -34,65 +35,35 @@
     <favorites_list name="Draughts" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.68336844">
+    <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
-        <splitter split-orientation="horizontal" split-proportion="0.5">
-          <split-first>
-            <leaf>
-              <file leaf-file-name="splitBoard.py" pinned="false" current="true" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/Image/splitBoard.py">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state line="125" column="36" selection-start="5130" selection-end="5130" vertical-scroll-proportion="0.35235378" vertical-offset="1878" max-vertical-offset="4437">
-                      <folding>
-                        <element signature="e#0#10#0" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="main.py" pinned="false" current="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/main.py">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state line="54" column="0" selection-start="1069" selection-end="1069" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="1360">
-                      <folding>
-                        <element signature="e#0#10#0" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-            </leaf>
-          </split-first>
-          <split-second>
-            <leaf>
-              <file leaf-file-name="AIlogic.py" pinned="false" current="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/Game/AIlogic.py">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state line="180" column="31" selection-start="3406" selection-end="4610" vertical-scroll-proportion="1.2394958" vertical-offset="2141" max-vertical-offset="3145">
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="basicStructs.py" pinned="false" current="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/Game/basicStructs.py">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state line="5" column="10" selection-start="45" selection-end="51" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5593">
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-            </leaf>
-          </split-second>
-        </splitter>
+        <leaf>
+          <file leaf-file-name="splitBoard.py" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Image/splitBoard.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="60" column="9" selection-start="2590" selection-end="2590" vertical-scroll-proportion="0.0" vertical-offset="961" max-vertical-offset="4556">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="main.py" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/main.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="63" column="35" selection-start="1355" selection-end="1355" vertical-scroll-proportion="0.6254826" vertical-offset="713" max-vertical-offset="1513">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="basicStructs.py" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Game/basicStructs.py">
+          <file leaf-file-name="splitBoard.py" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Image/splitBoard.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="170" column="20" selection-start="4142" selection-end="4430" vertical-scroll-proportion="0.6890157" vertical-offset="2407" max-vertical-offset="5593">
+                <state line="172" column="18" selection-start="6548" selection-end="6548" vertical-scroll-proportion="0.5960396" vertical-offset="2555" max-vertical-offset="4488">
                   <folding />
                 </state>
               </provider>
@@ -101,7 +72,16 @@
           <file leaf-file-name="AIlogic.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Game/AIlogic.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3179">
+                <state line="102" column="15" selection-start="2673" selection-end="2673" vertical-scroll-proportion="0.0" vertical-offset="1734" max-vertical-offset="3179">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="basicStructs.py" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Game/basicStructs.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="155" column="27" selection-start="3960" selection-end="3960" vertical-scroll-proportion="0.0" vertical-offset="2618" max-vertical-offset="6052">
                   <folding />
                 </state>
               </provider>
@@ -139,16 +119,16 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/Game/AIlogic.py" />
         <option value="$PROJECT_DIR$/Game/basicStructs.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/Image/splitBoard.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="2576" />
-    <option name="height" value="1426" />
+    <option name="x" value="512" />
+    <option name="y" value="240" />
+    <option name="width" value="1536" />
+    <option name="height" value="960" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -243,25 +223,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.main">
-    <configuration default="false" name="AIlogic" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Game" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Draughts" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Game/AIlogic.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
     <configuration default="false" name="detectCircle" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -335,6 +296,29 @@
       <module name="Draughts" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonCover" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonCover" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="basicStructs" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Game" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Draughts" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Game/basicStructs.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
@@ -491,19 +475,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.AIlogic" />
-      <item index="1" class="java.lang.String" itemvalue="Python.detectCircle" />
-      <item index="2" class="java.lang.String" itemvalue="Python.splitBoard" />
-      <item index="3" class="java.lang.String" itemvalue="Python.Python Console" />
-      <item index="4" class="java.lang.String" itemvalue="Python.main" />
+      <item index="0" class="java.lang.String" itemvalue="Python.detectCircle" />
+      <item index="1" class="java.lang.String" itemvalue="Python.splitBoard" />
+      <item index="2" class="java.lang.String" itemvalue="Python.Python Console" />
+      <item index="3" class="java.lang.String" itemvalue="Python.main" />
+      <item index="4" class="java.lang.String" itemvalue="Python.basicStructs" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.main" />
-        <item index="1" class="java.lang.String" itemvalue="Python.splitBoard" />
-        <item index="2" class="java.lang.String" itemvalue="Python.Python Console" />
-        <item index="3" class="java.lang.String" itemvalue="Python.detectCircle" />
-        <item index="4" class="java.lang.String" itemvalue="Python.AIlogic" />
+        <item index="1" class="java.lang.String" itemvalue="Python.basicStructs" />
+        <item index="2" class="java.lang.String" itemvalue="Python.splitBoard" />
+        <item index="3" class="java.lang.String" itemvalue="Python.Python Console" />
+        <item index="4" class="java.lang.String" itemvalue="Python.detectCircle" />
       </list>
     </recent_temporary>
   </component>
@@ -547,7 +531,11 @@
       <created>1385311875380</created>
       <updated>1385311875380</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Refactored Image module, added main.py, basic gameplay is possible!&#10;Bug: Kings aren't detecting with camera.">
+      <created>1385863917165</created>
+      <updated>1385863917166</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -571,19 +559,19 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1426" extended-state="6" />
+    <frame x="512" y="240" width="1536" height="960" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34175533" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34140435" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972136" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.072265625" sideWeight="0.5727554" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.07171053" sideWeight="0.6585956" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3993808" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.42724457" sideWeight="0.44101563" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42724457" sideWeight="0.5589844" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34140435" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5582031" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22058824" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -606,7 +594,8 @@
     <MESSAGE value="Game template added. Algotithm won for first time!" />
     <MESSAGE value="Code inspect and reformat." />
     <MESSAGE value="Fix bug which makes moving to X = -1 possible." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix bug which makes moving to X = -1 possible." />
+    <MESSAGE value="Refactored Image module, added main.py, basic gameplay is possible!&#10;Bug: Kings aren't detecting with camera." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored Image module, added main.py, basic gameplay is possible!&#10;Bug: Kings aren't detecting with camera." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -626,17 +615,13 @@
     <entry file="file://$PROJECT_DIR$/Image/splitBoard.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="82" column="0" selection-start="2432" selection-end="2432" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="3111">
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="25" selection-start="77" selection-end="77" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="204">
-          <folding />
-        </state>
+        <state line="6" column="25" selection-start="77" selection-end="77" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="204" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Game/AIlogic.py">
@@ -676,48 +661,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="25" selection-start="77" selection-end="77" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="204">
-          <folding />
-        </state>
+        <state line="6" column="25" selection-start="77" selection-end="77" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="204" />
       </provider>
     </entry>
     <entry file="file://C:/Python27/Lib/test/cmath_testcases.txt">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="1362" column="24" selection-start="86888" selection-end="86888" vertical-scroll-proportion="0.33333334" vertical-offset="23012" max-vertical-offset="40307" />
+      </provider>
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Game/AIlogic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3128">
+        <state line="102" column="15" selection-start="2673" selection-end="2673" vertical-scroll-proportion="0.0" vertical-offset="1734" max-vertical-offset="3179">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Game/basicStructs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="170" column="20" selection-start="4142" selection-end="4430" vertical-scroll-proportion="0.6890157" vertical-offset="2407" max-vertical-offset="5593">
+        <state line="155" column="27" selection-start="3960" selection-end="3960" vertical-scroll-proportion="0.0" vertical-offset="2618" max-vertical-offset="6052">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="0" selection-start="1069" selection-end="1069" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="1360">
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
+        <state line="63" column="35" selection-start="1355" selection-end="1355" vertical-scroll-proportion="0.6254826" vertical-offset="713" max-vertical-offset="1513">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Image/splitBoard.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="36" selection-start="5130" selection-end="5130" vertical-scroll-proportion="0.35235378" vertical-offset="1878" max-vertical-offset="4437">
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
+        <state line="172" column="18" selection-start="6548" selection-end="6548" vertical-scroll-proportion="0.5960396" vertical-offset="2555" max-vertical-offset="4488">
+          <folding />
         </state>
       </provider>
     </entry>

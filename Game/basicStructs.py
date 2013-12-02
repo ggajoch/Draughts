@@ -170,6 +170,33 @@ class Board:
                 return True
         return False
 
+    def flatKings(self):
+        for i in xrange(8):
+            for j in xrange(8):
+                if self[i, j] == Field.HU_KING:
+                    self[i, j] = Field.HU
+                if self[i, j] == Field.AI_KING:
+                    self[i, j] = Field.AI
+
+    def boardFromCamera(self, nextBoard):
+        now = self.copy()
+        now.swapSides()
+        #print "nextBoard:"
+        #print nextBoard
+        for move in now.possibleMoves():
+            Actual = now.copy()
+            Actual.executeMove(move)
+            flat = Actual.copy()
+            flat.flatKings()
+            flat.swapSides()
+            #print "Flat:"
+            #print flat
+
+            if flat.equal(nextBoard):
+                Actual.swapSides()
+                return Actual
+        return None
+
 
 class Shift:
     src = Field([-2, -2])
