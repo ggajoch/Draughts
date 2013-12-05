@@ -15,6 +15,9 @@ class Field:
         self.img = Image
 
 
+MousePoints = []
+
+
 def show_image(img):
     cv2.namedWindow('image')
     cv2.imshow('image', img)
@@ -39,7 +42,7 @@ class ImageProcess:
                           [0, 174.03994082840237, 0, 188.14557797971258, 0, 339.61908284023667, 0, 302.1010600907029],
                           [165.08341551610783, 0, 216.80029585798817, 0, 177.81878698224853, 0, 177.77144970414201,
                            0]]#[[0 for i in xrange(8)] for j in xrange(8)]
-        self.splitPoints = [[344, 175], [819, 183], [352, 661], [821, 658]]
+        self.splitPoints = [[481, 294], [861, 308], [467, 672], [847, 689]]
 
     def calibratation(self, fieldList):
         for field in fieldList:
@@ -68,27 +71,34 @@ class ImageProcess:
 
     def mouseEvent(self, event, x, y, flags, param):
         global MouseImgCopy, MousePoints
-        if event == cv2.EVENT_LBUTTONDOWN:
-            MousePoints.append([x, y])
+        if event == cv2.EVENT_MOUSEMOVE:
             cv2.circle(MouseImgCopy, (x, y), 4, (0, 255, 0), -1)
+        if event == cv2.EVENT_LBUTTONUP:
+            MousePoints.append([x, y])
+            cv2.circle(MouseImgCopy, (x, y), 4, (255, 0, 0), -1)
 
-
-    def imageSplit(self):
+    def calibrate_board(self):
+        self.img = take_photo()
         global MouseImgCopy, MousePoints
         MousePoints = self.splitPoints
         MouseImgCopy = copy.deepcopy(self.img)
         cv2.namedWindow('image')
         cv2.setMouseCallback('image', self.mouseEvent)
+        MousePoints = []
         while True:
             cv2.imshow('image', MouseImgCopy)
             if len(MousePoints) == 4 or cv2.waitKey(1) & 0xFF == 27:
                 break
-            #print MousePoints
-
+        self.splitPoints = MousePoints
+        print self.splitPoints
         cv2.destroyAllWindows()
 
+    def imageSplit(self):
+        if len(self.splitPoints) != 4:
+            print "Board not detected!"
+            sys.exit(0)
         rows, cols, ch = self.img.shape
-        pts1 = np.float32(MousePoints)
+        pts1 = np.float32(self.splitPoints)
         pts2 = np.float32([[0, 0], [600, 0], [0, 600], [600, 600]])
         M = cv2.getPerspectiveTransform(pts1, pts2)
         self.trimmed = cv2.warpPerspective(self.img, M, (600, 600))
@@ -164,15 +174,15 @@ class ImageProcess:
         img2 = cv2.medianBlur(img2, 7)
         #cimg = cv2.cvtColor(img,cv2.COLOR_GRAY2BGR)
         edges = cv2.GaussianBlur(img2, (3, 3), 0)
-        edges = cv2.Canny(edges, 100, 100)
+        edges = cv2.Canny(edges, 50, 100)
 
         x, dst = cv2.threshold(img2, 50, 255, cv2.THRESH_BINARY)
         #show_image(dst)
         #show_image(edges)
 
         circles = cv2.HoughCircles(edges, cv2.cv.CV_HOUGH_GRADIENT, 1, 20,
-                                   param1=self.param1,
-                                   param2=self.param2,
+                                   param1=70,
+                                   param2=20,
                                    minRadius=10,
                                    maxRadius=0)
 
@@ -235,7 +245,7 @@ ix = iy = 0
 
 
 def take_photo():
-    os.system(r"C:\cygwin64\bin\wget.exe http://192.168.1.101:8080/photoaf.jpg -O shot.jpg --quiet")
+    os.system(r"C:\cygwin\bin\wget.exe http://192.168.137.171:8080/photoaf.jpg -O shot.jpg --quiet")
     img = cv2.imread(r"shot.jpg")
     return img
 
@@ -243,6 +253,7 @@ def take_photo():
 if __name__ == "__main__":
 
     proc = ImageProcess()
+    proc.calibrate_board()
     """while True:
         img = take_photo()
         proc.addToCalibrate(img)

@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a62f60b-1eaf-4646-b5ad-2ab78c745018" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Game/basicStructs.py" afterPath="$PROJECT_DIR$/Game/basicStructs.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Image/splitBoard.py" afterPath="$PROJECT_DIR$/Image/splitBoard.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -21,8 +20,8 @@
     <SUITE FILE_PATH="coverage/Draughts$AIlogic.coverage" NAME="AIlogic Coverage Results" MODIFIED="1385339173809" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Game" />
     <SUITE FILE_PATH="coverage/Draughts$basicStructs.coverage" NAME="basicStructs Coverage Results" MODIFIED="1385929009367" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Game" />
     <SUITE FILE_PATH="coverage/Draughts$Python_Console.coverage" NAME="Python Console Coverage Results" MODIFIED="1385680621491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Draughts$main.coverage" NAME="main Coverage Results" MODIFIED="1385949166116" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Draughts$splitBoard.coverage" NAME="splitBoard Coverage Results" MODIFIED="1385927438189" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Image" />
+    <SUITE FILE_PATH="coverage/Draughts$main.coverage" NAME="main Coverage Results" MODIFIED="1386261501966" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Draughts$splitBoard.coverage" NAME="splitBoard Coverage Results" MODIFIED="1386260178662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Image" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -35,22 +34,22 @@
     <favorites_list name="Draughts" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.49965447">
       <split-first>
         <leaf>
-          <file leaf-file-name="splitBoard.py" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="splitBoard.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Image/splitBoard.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="60" column="9" selection-start="2590" selection-end="2590" vertical-scroll-proportion="0.0" vertical-offset="961" max-vertical-offset="4556">
+                <state line="223" column="13" selection-start="8162" selection-end="8162" vertical-scroll-proportion="0.8609756" vertical-offset="3370" max-vertical-offset="4777">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="main.py" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="main.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/main.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="63" column="35" selection-start="1355" selection-end="1355" vertical-scroll-proportion="0.6254826" vertical-offset="713" max-vertical-offset="1513">
+                <state line="65" column="28" selection-start="1322" selection-end="1322" vertical-scroll-proportion="0.0" vertical-offset="959" max-vertical-offset="1377">
                   <folding />
                 </state>
               </provider>
@@ -60,10 +59,10 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="splitBoard.py" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="splitBoard.py" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Image/splitBoard.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="172" column="18" selection-start="6548" selection-end="6548" vertical-scroll-proportion="0.5960396" vertical-offset="2555" max-vertical-offset="4488">
+                <state line="220" column="18" selection-start="8041" selection-end="8041" vertical-scroll-proportion="-0.15632184" vertical-offset="3740" max-vertical-offset="4777">
                   <folding />
                 </state>
               </provider>
@@ -81,7 +80,7 @@
           <file leaf-file-name="basicStructs.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Game/basicStructs.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="155" column="27" selection-start="3960" selection-end="3960" vertical-scroll-proportion="0.0" vertical-offset="2618" max-vertical-offset="6052">
+                <state line="182" column="23" selection-start="4789" selection-end="4789" vertical-scroll-proportion="0.0" vertical-offset="3094" max-vertical-offset="6052">
                   <folding />
                 </state>
               </provider>
@@ -125,10 +124,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="512" />
-    <option name="y" value="240" />
-    <option name="width" value="1536" />
-    <option name="height" value="960" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1616" />
+    <option name="height" value="886" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -484,8 +483,8 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.main" />
-        <item index="1" class="java.lang.String" itemvalue="Python.basicStructs" />
-        <item index="2" class="java.lang.String" itemvalue="Python.splitBoard" />
+        <item index="1" class="java.lang.String" itemvalue="Python.splitBoard" />
+        <item index="2" class="java.lang.String" itemvalue="Python.basicStructs" />
         <item index="3" class="java.lang.String" itemvalue="Python.Python Console" />
         <item index="4" class="java.lang.String" itemvalue="Python.detectCircle" />
       </list>
@@ -559,19 +558,19 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="512" y="240" width="1536" height="960" extended-state="0" />
+    <frame x="-8" y="-8" width="1616" height="886" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34140435" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3515732" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972136" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.07171053" sideWeight="0.6585956" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0997426" sideWeight="0.64842683" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3993808" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34140435" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5582031" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3515732" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4391245" sideWeight="0.55727154" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22058824" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -665,11 +664,11 @@
       </provider>
     </entry>
     <entry file="file://C:/Python27/Lib/test/cmath_testcases.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1362" column="24" selection-start="86888" selection-end="86888" vertical-scroll-proportion="0.33333334" vertical-offset="23012" max-vertical-offset="40307" />
-      </provider>
       <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
         <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1362" column="24" selection-start="86888" selection-end="86888" vertical-scroll-proportion="0.33333334" vertical-offset="23012" max-vertical-offset="40307" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Game/AIlogic.py">
@@ -681,21 +680,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Game/basicStructs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="155" column="27" selection-start="3960" selection-end="3960" vertical-scroll-proportion="0.0" vertical-offset="2618" max-vertical-offset="6052">
+        <state line="182" column="23" selection-start="4789" selection-end="4789" vertical-scroll-proportion="0.0" vertical-offset="3094" max-vertical-offset="6052">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="35" selection-start="1355" selection-end="1355" vertical-scroll-proportion="0.6254826" vertical-offset="713" max-vertical-offset="1513">
+        <state line="65" column="28" selection-start="1322" selection-end="1322" vertical-scroll-proportion="0.0" vertical-offset="959" max-vertical-offset="1377">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Image/splitBoard.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="172" column="18" selection-start="6548" selection-end="6548" vertical-scroll-proportion="0.5960396" vertical-offset="2555" max-vertical-offset="4488">
+        <state line="223" column="13" selection-start="8162" selection-end="8162" vertical-scroll-proportion="0.8609756" vertical-offset="3370" max-vertical-offset="4777">
           <folding />
         </state>
       </provider>
