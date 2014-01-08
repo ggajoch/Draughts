@@ -3,7 +3,6 @@ from serial import Serial
 
 class sender:
     def init(self,device):
-        #Serial.open("/dev/ttyS0",115200)
         pass
 
     def sendByte(self,x):
@@ -30,8 +29,9 @@ class sender:
         return r
     
 class NXTconn(sender):
-    def __init__(self, a, b):
-        self.connect(a,b)
+    def __init__(self):
+        self.connect(1, 2)
+
     def connect(self, sendMail, rcvMail):
         self.sendMailbox = sendMail
         self.rcvMailbox = rcvMail

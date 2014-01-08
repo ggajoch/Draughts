@@ -37,11 +37,6 @@ while a.gameWon() == 0:
         img = Image.take_photo()
         b = proc.frame_table(img, False)
         After = a.boardFromCamera(b)
-        #print "From Camera:\n",b
-        #print After
-
-
-
 
         if After is not None:
             print "OK"

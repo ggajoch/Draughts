@@ -1,0 +1,8 @@
+9999
+
+
+178x
+54+49
+
+5 0 0 0x13 0xB 0 1 - odczyt 1 mailboxa
+9 0 0 9 5 5 0xFF 1 0 0 0 - zapis na 5 mailboxa
