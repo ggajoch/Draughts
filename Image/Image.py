@@ -32,19 +32,9 @@ class ImageProcess:
         self.param2 = 15
         self.fields1 = self.fields2 = []
         self.FieldTable = [[1 for j in xrange(8)] for i in xrange(8)]
-        # [todo] - do sth with treshold
-        self.Threshold = [[0, 168.6261111111111, 0, 172.33210059171597, 0, 217.72415844838923, 0, 200],
-                          [187.78032544378698, 0, 187.92987179487179, 0, 200.40472647392289, 0, 172.39933658374594, 0],
-                          [0, 209.38461538461539, 0, 204.87850817718606, 0, 189.74725714990137, 0, 171.61686390532543],
-                          [200, 0, 208.26701183431953, 0, 198.93121301775147, 0, 298.09615384615387, 0],
-                          [0, 189.03825021132715, 0, 211.66642011834318, 0, 210.86545138888889, 0, 204.1508875739645],
-                          [160.65898593165076, 0, 199.6301775147929, 0, 282.01529113247864, 0, 336.66124260355031, 0],
-                          [0, 174.03994082840237, 0, 188.14557797971258, 0, 339.61908284023667, 0, 302.1010600907029],
-                          [165.08341551610783, 0, 216.80029585798817, 0, 177.81878698224853, 0, 177.77144970414201,
-                           0]]#[[0 for i in xrange(8)] for j in xrange(8)]
-        self.splitPoints = [[481, 294], [861, 308], [467, 672], [847, 689]]
+        self.splitPoints = [[458, 333], [458, 692], [817, 327], [826, 692]]
 
-    def calibratation(self, fieldList):
+    def calibratation(self, fieldList): # check A1, next via white edge, across board and left corner
         for field in fieldList:
             for p1, p2 in [(a, b) for a in xrange(10, 50) for b in xrange(10, 50)]:
                 self.param1[field.x][field.y] = p1
@@ -168,8 +158,9 @@ class ImageProcess:
         0 - no figure
         1 - white
         -1 - black"""
-        #global img
-        #img2 = cv2.imread(r"C:\Users\rexina\Dropbox\AGH\MiTP\cz.jpg")
+
+        threshold = 500
+
         img2 = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         img2 = cv2.medianBlur(img2, 7)
         #cimg = cv2.cvtColor(img,cv2.COLOR_GRAY2BGR)
@@ -220,7 +211,7 @@ class ImageProcess:
             return suma
             #print pos," -> ",suma,"\t|\t",self.Threshold[pos[0]][pos[1]]
         #print "suma =",suma
-        if suma > 700:#self.Threshold[pos[0]][pos[1]]:
+        if suma > threshold:#self.Threshold[pos[0]][pos[1]]:
             #print "WHITE PAWN"
             cv2.circle(img, (i[0], i[1]), i[2], (0, 255, 0), 2)
             cv2.circle(img, (i[0], i[1]), 2, (0, 0, 255), 3)
@@ -234,7 +225,7 @@ class ImageProcess:
         #cv2.waitKey(0)
         #cv2.destroyAllWindows()
 
-        if suma > 700:##self.Threshold[pos[0]][pos[1]]:
+        if suma > threshold:##self.Threshold[pos[0]][pos[1]]:
             return 1
         else:
             return -1
@@ -245,37 +236,27 @@ ix = iy = 0
 
 
 def take_photo():
-    os.system(r"C:\cygwin\bin\wget.exe http://192.168.137.171:8080/photoaf.jpg -O shot.jpg --quiet")
+    os.system(r"wget http://192.168.2.5:8080/photoaf.jpg -O shot.jpg --quiet")
     img = cv2.imread(r"shot.jpg")
     return img
-
 
 if __name__ == "__main__":
 
     proc = ImageProcess()
-    proc.calibrate_board()
-    """while True:
-        img = take_photo()
-        proc.addToCalibrate(img)
-        x = show_image(proc.trimmed)
-        if x == 27:
-            break"""
+    #proc.calibrate_board()
 
-    print proc.Threshold
+
+
 
     cv2.destroyAllWindows()
     while True:
         img = take_photo()
         board = proc.frame_table(img, False)
 
-        cv2.namedWindow('image')
-        while True:
-            cv2.imshow('image', proc.trimmed)
-            a = cv2.waitKey(1)
-            if a & 0xFF == 27:
-                sys.exit(0)
-            if a & 0xFF == ord('a'):
-                break
+        cv2.imshow('image', proc.trimmed)
+        xxx = cv2.waitKey(0)
+        if xxx == 27:
+            sys.exit(0)
         cv2.destroyAllWindows()
 
         print board
