@@ -12,9 +12,9 @@ from PyQt4.QtCore import *
 
 
 class MainApp(QThread):
-    def run(self):
-        proc = Image.ImageProcess()
+    proc = Image.ImageProcess()
 
+    def run(self):
         a = Board()
         #img = Image.take_photo()
         #a = proc.frame_table(img, False)
@@ -37,7 +37,7 @@ class MainApp(QThread):
             bads = 0
             while ok == 0:
                 img = Image.take_photo()
-                b = proc.frame_table(img, False)
+                b = self.proc.frame_table(img, False)
                 After = a.boardFromCamera(b)
 
                 if After is not None:
@@ -48,7 +48,7 @@ class MainApp(QThread):
                 else:
                     bads += 1
                 if bads >= 1:
-                    cv2.imshow('image', proc.trimmed)
+                    cv2.imshow('image', self.proc.trimmed)
                     xxx = cv2.waitKey(0)
                     if xxx == 27:
                         sys.exit(0)

@@ -28,6 +28,12 @@ except AttributeError:
 class Ui_MainWindow(QtCore.QObject):
     updateImage = QtCore.pyqtSignal()
 
+    def register_interface(self, GUIInterface):
+        self.interface = GUIInterface
+
+    def register_worker(self, w):
+        self.worker = w
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
         MainWindow.resize(1143, 657)
@@ -70,11 +76,17 @@ class Ui_MainWindow(QtCore.QObject):
 
         self.updateImage.connect(self.updateImageHadler) #custom slot for updating image {!}
 
+        MainWindow.connect(self.pushButton_4, QtCore.SIGNAL("clicked()"), self.calibrateHandler)#GUI.calibrate_image)
+
+    def calibrateHandler(self):
+        self.interface.calibrate_image(self.worker)
+
     def updateImageHadler(self):
         myPixmap = QtGui.QPixmap(QtCore.QString.fromUtf8('tmp.jpg'))
         scene = QtGui.QGraphicsScene()
         scene.addPixmap(myPixmap)
         self.image.setScene(scene)
+        self.movesList.append("updated")
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
