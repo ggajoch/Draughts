@@ -25,8 +25,16 @@ except AttributeError:
         return QtGui.QApplication.translate(context, text, disambig)
 
 
+class GUI_info__:
+    def __init__(self):
+        self.text = ""
+
+GUI_info = GUI_info__()
+
+
 class Ui_MainWindow(QtCore.QObject):
     updateImage = QtCore.pyqtSignal()
+    add_text = QtCore.pyqtSignal()
 
     def register_interface(self, GUIInterface):
         self.interface = GUIInterface
@@ -75,8 +83,12 @@ class Ui_MainWindow(QtCore.QObject):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
         self.updateImage.connect(self.updateImageHadler) #custom slot for updating image {!}
+        self.add_text.connect(self.add_textHandler)
 
         MainWindow.connect(self.pushButton_4, QtCore.SIGNAL("clicked()"), self.calibrateHandler)#GUI.calibrate_image)
+		
+    def add_textHandler(self):
+        self.movesList.append(GUI_info.text)
 
     def calibrateHandler(self):
         self.interface.calibrate_image(self.worker)

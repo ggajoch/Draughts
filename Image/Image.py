@@ -5,7 +5,28 @@ import os
 import numpy as np
 
 sys.path.append("../Game")
+sys.path.append("../MainApp")
+import conf
 import basicStructs as BS
+from threading import Timer
+
+class Get_Image_:
+    def __init__(self):
+        self.actual = False
+    def get_img(self):
+        if self.actual == False:
+            self.take_photo()
+        img = cv2.imread("shot.jpg")
+        return img
+    def take_photo(self):
+    	self.actual = True
+   		os.system(r"wget http://" + conf.IP + ":8080/photoaf.jpg -O shot.jpg --quiet")
+   		t = Timer(2, self.mark_old)
+   	def mark_old(self):
+   		self.actual = False
+
+Get_Image = Get_Image_()
+
 
 
 class Field:
@@ -211,7 +232,7 @@ class ImageProcess:
             return suma
             #print pos," -> ",suma,"\t|\t",self.Threshold[pos[0]][pos[1]]
         #print "suma =",suma
-        if suma > threshold:#self.Threshold[pos[0]][pos[1]]:
+        if suma > conf.threshold:#self.Threshold[pos[0]][pos[1]]:
             #print "WHITE PAWN"
             cv2.circle(img, (i[0], i[1]), i[2], (0, 255, 0), 2)
             cv2.circle(img, (i[0], i[1]), 2, (0, 0, 255), 3)
@@ -225,7 +246,7 @@ class ImageProcess:
         #cv2.waitKey(0)
         #cv2.destroyAllWindows()
 
-        if suma > threshold:##self.Threshold[pos[0]][pos[1]]:
+        if suma > conf.threshold:##self.Threshold[pos[0]][pos[1]]:
             return 1
         else:
             return -1
@@ -234,11 +255,6 @@ class ImageProcess:
 drawing = False
 ix = iy = 0
 
-
-def take_photo():
-    os.system(r"wget http://192.168.2.5:8080/photoaf.jpg -O shot.jpg --quiet")
-    img = cv2.imread(r"shot.jpg")
-    return img
 
 if __name__ == "__main__":
 

@@ -28,11 +28,13 @@ class image_updater(QThread):
 
     def run(self):
         while True:
-            img = Image.take_photo()
-            MainApp.proc.frame_table(img, False)
-            cv2.imwrite("tmp.jpg", MainApp.proc.trimmed)
-            self.ui.updateImage.emit()
-            time.sleep(3)
+            #img = Image.take_photo()
+            #MainApp.proc.frame_table(img, False)
+            #cv2.imwrite("tmp.jpg", MainApp.proc.trimmed)
+            #self.ui.updateImage.emit()
+            GUI_info.text = "trolololo"
+            self.ui.add_text.emit()
+            time.sleep(0.1)
 
 
 class GuiHelpers:
@@ -58,7 +60,7 @@ if __name__ == "__main__":
 
     ui.register_worker(th)
     ui.register_interface(g)
-    #guiHelp = GuiHelpers(th)
+
 
     th.start()
     sys.exit(app.exec_())
