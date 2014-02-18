@@ -1,4 +1,4 @@
-from serial import Serial
+#from serial import Serial
 
 
 class sender:

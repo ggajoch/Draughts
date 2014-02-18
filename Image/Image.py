@@ -10,24 +10,19 @@ import conf
 import basicStructs as BS
 from threading import Timer
 
-class Get_Image_:
-    def __init__(self):
-        self.actual = False
-    def get_img(self):
-        if self.actual == False:
-            self.take_photo()
-        img = cv2.imread("shot.jpg")
-        return img
-    def take_photo(self):
-    	self.actual = True
-   		os.system(r"wget http://" + conf.IP + ":8080/photoaf.jpg -O shot.jpg --quiet")
-   		t = Timer(2, self.mark_old)
-   	def mark_old(self):
-   		self.actual = False
+actual = False
 
-Get_Image = Get_Image_()
-
-
+def get_img(self):
+    if actual == False:
+        selftake_photo()
+    img = cv2.imread("shot.jpg")
+    return img
+def mark_old():
+    actual = False
+def take_photo():
+	actual = True
+	os.system(r"wget http://" + conf.IP + ":8080/photoaf.jpg -O shot.jpg --quiet")
+	t = Timer(2, mark_old)
 
 class Field:
     def __init__(self, Image, xx, yy):

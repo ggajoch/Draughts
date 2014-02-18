@@ -8,6 +8,8 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+import nxtWindow
+
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -85,13 +87,24 @@ class Ui_MainWindow(QtCore.QObject):
         self.updateImage.connect(self.updateImageHadler) #custom slot for updating image {!}
         self.add_text.connect(self.add_textHandler)
 
-        MainWindow.connect(self.pushButton_4, QtCore.SIGNAL("clicked()"), self.calibrateHandler)#GUI.calibrate_image)
-		
+        MainWindow.connect(self.pushButton_4, QtCore.SIGNAL("clicked()"), self.calibrateHandler)
+        MainWindow.connect(self.pushButton, QtCore.SIGNAL("clicked()"), self.nxtWindowHandler)
+
     def add_textHandler(self):
         self.movesList.append(GUI_info.text)
 
+    def add_textFunction(self,string):
+        self.movesList.append(string)
+
     def calibrateHandler(self):
         self.interface.calibrate_image(self.worker)
+
+    def nxtWindowHandler(self):
+        Dialog = QtGui.QDialog()
+        ui = nxtWindow.Ui_Dialog()
+        ui.setupUi(Dialog)
+        #Dialog.show()
+        Dialog.exec_()
 
     def updateImageHadler(self):
         myPixmap = QtGui.QPixmap(QtCore.QString.fromUtf8('tmp.jpg'))
@@ -104,7 +117,7 @@ class Ui_MainWindow(QtCore.QObject):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
         self.view.setItemText(0, _translate("MainWindow", "Actual View", None))
         self.view.setItemText(1, _translate("MainWindow", "Board", None))
-        self.pushButton.setText(_translate("MainWindow", "Reset Board", None))
+        self.pushButton.setText(_translate("MainWindow", "NXT control", None))
         self.pushButton_2.setText(_translate("MainWindow", "Take back", None))
         self.pushButton_3.setText(_translate("MainWindow", "Force actual position", None))
         self.pushButton_4.setText(_translate("MainWindow", "Calibrate corners", None))

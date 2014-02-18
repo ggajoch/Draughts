@@ -13,11 +13,11 @@ from mainApp import *
 from basicStructs import *
 from AIlogic import *
 import Image, time
+import nxtWindow
 
 
 class image_updater(QThread):
     run = 1
-
     def __init__(self, Main=None):
         super(image_updater, self).__init__(Main)
         self.ui = Main
@@ -32,9 +32,11 @@ class image_updater(QThread):
             #MainApp.proc.frame_table(img, False)
             #cv2.imwrite("tmp.jpg", MainApp.proc.trimmed)
             #self.ui.updateImage.emit()
-            GUI_info.text = "trolololo"
-            self.ui.add_text.emit()
+            #GUI_info.text = "trolololo"
+            #self.ui.add_text.emit("abc")
+            self.ui.add_textFunction("abc")
             time.sleep(0.1)
+
 
 
 class GuiHelpers:
