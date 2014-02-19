@@ -8,8 +8,7 @@
 # WARNING! All changes made in this file will be lost!
 
 import sys
-sys.path.append("../NXTprotocol")
-import nxt
+import NXTprotocol.nxt as nxt
 
 from PyQt4 import QtCore, QtGui
 
@@ -103,10 +102,13 @@ class Ui_Dialog(object):
 # ~~~~~~~~~~~~~   MY CODE ENDS HERE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
+
 # ~~~~~~~~~~~~~   MY CODE STARTS HERE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def nxtGoToPos(self):
         print "going to (%i %i)" % (self.valX.value(), self.valY.value())
+        nxt.goto(self.valX.value(), self.valY.value())
 # ~~~~~~~~~~~~~   MY CODE ENDS HERE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(_translate("Dialog", "Dialog", None))
         self.homeY.setText(_translate("Dialog", "Home Y", None))

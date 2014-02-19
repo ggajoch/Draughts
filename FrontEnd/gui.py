@@ -1,18 +1,12 @@
+import sys, time, os
 import cv2
-import sys
-
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
-
 from mainWindow import *
-
-sys.path.append("../MainApp")
-sys.path.append("../Game")
-sys.path.append(r"..\Image")
-from mainApp import *
-from basicStructs import *
-from AIlogic import *
-import Image, time
+from MainApp.mainApp import *
+from Game.basicStructs import *
+from Game.AIlogic import *
+import Image.Image as Image
 import nxtWindow
 
 
@@ -21,6 +15,7 @@ class image_updater(QThread):
     def __init__(self, Main=None):
         super(image_updater, self).__init__(Main)
         self.ui = Main
+        self.work = True
 
     def update_ui(self, Main):
         super(image_updater, self).__init__(Main)
@@ -28,15 +23,18 @@ class image_updater(QThread):
 
     def run(self):
         while True:
-            #img = Image.take_photo()
-            #MainApp.proc.frame_table(img, False)
-            #cv2.imwrite("tmp.jpg", MainApp.proc.trimmed)
-            #self.ui.updateImage.emit()
-            #GUI_info.text = "trolololo"
-            #self.ui.add_text.emit("abc")
-            self.ui.add_textFunction("abc")
-            time.sleep(0.1)
+            if self.work:
+                img = Image.get_img()
+                try:
+                    MainApp.proc.frame_table(img, False)
+                    cv2.imwrite("tmp.jpg", MainApp.proc.trimmed)
+                    self.ui.updateImage.emit()
+                    self.ui.add_textFunction("New image")
+                except:
+                    self.ui.add_textFunction("Cannot connect!")
 
+
+            time.sleep(2)
 
 
 class GuiHelpers:
@@ -44,9 +42,10 @@ class GuiHelpers:
         pass
 
     def calibrate_image(self, w):
-        w.quit()
-        MainApp.proc.calibrate_board()
-        w.start()
+        w.work = False
+        img = Image.get_img()
+        MainApp.proc.calibrate_board(img)
+        w.work = True
 
 
 if __name__ == "__main__":
@@ -65,4 +64,9 @@ if __name__ == "__main__":
 
 
     th.start()
-    sys.exit(app.exec_())
+
+    x = app.exec_()
+    th.terminate()
+    Image.timer_stop()
+    print "finished"
+    sys.exit(x)

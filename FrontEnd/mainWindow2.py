@@ -10,7 +10,7 @@
 from PyQt4 import QtCore, QtGui
 import nxtWindow
 import configWindow
-import MainApp.conf as config
+
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -26,7 +26,7 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class Ui_MainWindow(QtCore.QObject):
+class Ui_MainWindow(object):
 
     updateImage = QtCore.pyqtSignal()
     add_text = QtCore.pyqtSignal()
@@ -43,7 +43,7 @@ class Ui_MainWindow(QtCore.QObject):
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.image = QtGui.QGraphicsView(self.centralwidget)
-        self.image.setGeometry(QtCore.QRect(20, 10, 605, 605))
+        self.image.setGeometry(QtCore.QRect(20, 10, 600, 600))
         self.image.setObjectName(_fromUtf8("image"))
         self.movesList = QtGui.QTextBrowser(self.centralwidget)
         self.movesList.setGeometry(QtCore.QRect(840, 20, 256, 471))
@@ -99,15 +99,11 @@ class Ui_MainWindow(QtCore.QObject):
         ui.setupUi(Dialog)
         Dialog.exec_()
 
-    def configHandler(self):
+    def configWindowHandler(self):
         Dialog = QtGui.QDialog()
-        ui = configWindow.Ui_Config()
+        ui = configWindow.Ui_Dialog()
         ui.setupUi(Dialog)
-        ui.lineEdit.setText(config.IP)
-        ui.spinBox.setValue(config.threshold)
-        if Dialog.exec_():
-            config.IP = ui.lineEdit.text()
-            config.threshold = ui.spinBox.value()
+        Dialog.exec_()
 
     def updateImageHadler(self):
         myPixmap = QtGui.QPixmap(QtCore.QString.fromUtf8('tmp.jpg'))
@@ -115,7 +111,7 @@ class Ui_MainWindow(QtCore.QObject):
         scene.addPixmap(myPixmap)
         self.image.setScene(scene)
         self.movesList.append("updated")
-        
+
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "Draughts player", None))
         self.nxtControlButton.setText(_translate("MainWindow", "NXT control", None))

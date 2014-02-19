@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Draughts player</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QGraphicsView" name="image">
@@ -19,30 +19,10 @@
      <rect>
       <x>20</x>
       <y>10</y>
-      <width>600</width>
-      <height>600</height>
+      <width>605</width>
+      <height>605</height>
      </rect>
     </property>
-   </widget>
-   <widget class="QComboBox" name="view">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>30</y>
-      <width>121</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <item>
-     <property name="text">
-      <string>Actual View</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Board</string>
-     </property>
-    </item>
    </widget>
    <widget class="QTextBrowser" name="movesList">
     <property name="geometry">
@@ -54,57 +34,38 @@
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>710</x>
-      <y>80</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Reset Board</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>710</x>
-      <y>130</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Take back</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="geometry">
-     <rect>
-      <x>680</x>
-      <y>180</y>
-      <width>131</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Force actual position</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
       <x>674</x>
-      <y>220</y>
-      <width>111</width>
-      <height>23</height>
+      <y>80</y>
+      <width>92</width>
+      <height>83</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Calibrate corners</string>
-    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <widget class="QPushButton" name="nxtControlButton">
+       <property name="text">
+        <string>NXT control</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QPushButton" name="configButton">
+       <property name="text">
+        <string>Config</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QPushButton" name="calibrateCornersButton">
+       <property name="text">
+        <string>Calibrate corners</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
