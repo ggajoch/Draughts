@@ -1,14 +1,12 @@
-import cv2
 import copy
 import sys
-
-sys.path.append("../Game")
-sys.path.append("../Image")
-from basicStructs import *
-from AIlogic import *
-import Image as Image
-
+import cv2
 from PyQt4.QtCore import *
+from Game.basicStructs import *
+from Game.AIlogic import *
+import Image.Image as Image
+
+
 
 
 class MainApp(QThread):

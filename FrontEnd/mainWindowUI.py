@@ -1,16 +1,13 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'main.ui'
+# Form implementation generated from reading ui file 'mainWindowUI.ui'
 #
-# Created: Wed Feb 19 02:31:36 2014
+# Created: Fri Feb 28 03:44:54 2014
 #      by: PyQt4 UI code generator 4.10.3
 #
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
-import nxtWindow
-import configWindow
-
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -27,23 +24,13 @@ except AttributeError:
         return QtGui.QApplication.translate(context, text, disambig)
 
 class Ui_MainWindow(object):
-
-    updateImage = QtCore.pyqtSignal()
-    add_text = QtCore.pyqtSignal()
-
-    def register_interface(self, GUIInterface):
-        self.interface = GUIInterface
-
-    def register_worker(self, w):
-        self.worker = w
-
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
         MainWindow.resize(1143, 657)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.image = QtGui.QGraphicsView(self.centralwidget)
-        self.image.setGeometry(QtCore.QRect(20, 10, 600, 600))
+        self.image.setGeometry(QtCore.QRect(20, 10, 605, 605))
         self.image.setObjectName(_fromUtf8("image"))
         self.movesList = QtGui.QTextBrowser(self.centralwidget)
         self.movesList.setGeometry(QtCore.QRect(840, 20, 256, 471))
@@ -75,56 +62,9 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-        self.updateImage.connect(self.updateImageHadler) #custom slot for updating image {!}
-        self.add_text.connect(self.add_textHandler)
-
-        MainWindow.connect(self.calibrateCornersButton, QtCore.SIGNAL("clicked()"), self.calibrateHandler)
-        MainWindow.connect(self.nxtControlButton, QtCore.SIGNAL("clicked()"), self.nxtWindowHandler)
-        MainWindow.connect(self.configButton,QtCore.SIGNAL("clicked()"),self.configHandler)
-
-    def add_textHandler(self):
-        self.movesList.append(self.textToAdd)
-
-    def add_textFunction(self,string):
-        #self.movesList.append(string)
-        self.textToAdd = string
-        self.add_text.emit()
-
-    def calibrateHandler(self):
-        self.interface.calibrate_image(self.worker)
-
-    def nxtWindowHandler(self):
-        Dialog = QtGui.QDialog()
-        ui = nxtWindow.Ui_Dialog()
-        ui.setupUi(Dialog)
-        Dialog.exec_()
-
-    def configWindowHandler(self):
-        Dialog = QtGui.QDialog()
-        ui = configWindow.Ui_Dialog()
-        ui.setupUi(Dialog)
-        Dialog.exec_()
-
-    def updateImageHadler(self):
-        myPixmap = QtGui.QPixmap(QtCore.QString.fromUtf8('tmp.jpg'))
-        scene = QtGui.QGraphicsScene()
-        scene.addPixmap(myPixmap)
-        self.image.setScene(scene)
-        self.movesList.append("updated")
-
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "Draughts player", None))
         self.nxtControlButton.setText(_translate("MainWindow", "NXT control", None))
         self.configButton.setText(_translate("MainWindow", "Config", None))
         self.calibrateCornersButton.setText(_translate("MainWindow", "Calibrate corners", None))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtGui.QApplication(sys.argv)
-    MainWindow = QtGui.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
 

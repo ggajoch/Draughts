@@ -6,30 +6,51 @@ import numpy as np
 
 sys.path.append("../Game")
 sys.path.append("../MainApp")
-import conf
+import MainApp.conf as conf
 import basicStructs as BS
 from threading import Timer
+import time
 
-actual = False
-
-def get_img(self):
-    if actual == False:
-        selftake_photo()
+# ~~~~~~~~~~~~~~~~~~~~~~~~~IMAGE TAKING LIB ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+request = False
+timerStop = False
+def get_img():
+    print "Request!"
+    global request
+    request = True
+    while request == True:
+        time.sleep(0.1)
     img = cv2.imread("shot.jpg")
     return img
-def mark_old():
-    actual = False
+
 def take_photo():
-	actual = True
-	os.system(r"wget http://" + conf.IP + ":8080/photoaf.jpg -O shot.jpg --quiet")
-	t = Timer(2, mark_old)
+    print conf.IP
+    os.system(r"wget --tries 1 --timeout 2 http://" + str(conf.IP) + ":8080/photoaf.jpg -O shot.jpg")# --quiet")
+
+timer = Timer(0,0)
+
+def check_for_request(): #periodically checking for new request from other threads
+    global request
+    if request:
+        take_photo()
+        request = False
+    global timer
+    if not timerStop:
+        timer = Timer(0.1, check_for_request)
+        timer.start()
+check_for_request()
+
+def timer_stop():
+    global timerStop, timer
+    timerStop = True
+    timer.cancel()
+# ~~~~~~~~~~~~~~~~~~~~~~~~~END IMAGE TAKING LIB ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 class Field:
     def __init__(self, Image, xx, yy):
         self.x = xx
         self.y = yy
         self.img = Image
-
 
 MousePoints = []
 
@@ -83,8 +104,8 @@ class ImageProcess:
             MousePoints.append([x, y])
             cv2.circle(MouseImgCopy, (x, y), 4, (255, 0, 0), -1)
 
-    def calibrate_board(self):
-        self.img = take_photo()
+    def calibrate_board(self,img):
+        self.img = img
         global MouseImgCopy, MousePoints
         MousePoints = self.splitPoints
         MouseImgCopy = copy.deepcopy(self.img)
@@ -95,7 +116,8 @@ class ImageProcess:
             cv2.imshow('image', MouseImgCopy)
             if len(MousePoints) == 4 or cv2.waitKey(1) & 0xFF == 27:
                 break
-        self.splitPoints = MousePoints
+        if len(MousePoints) == 4:
+            self.splitPoints = MousePoints
         print self.splitPoints
         cv2.destroyAllWindows()
 

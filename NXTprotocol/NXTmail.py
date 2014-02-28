@@ -3,12 +3,13 @@
 
 class sender:
     def init(self,device):
-        pass
+        print "NXT init"
 
     def sendByte(self,x):
-        print x
+        print "Sending %i" % x
 
     def readByte(self):
+        print "Reading Byte"
         return 0
 
     def sendAndReceive(self,comm):
@@ -27,7 +28,8 @@ class sender:
         for i in xrange(length):
             r += self.readByte()
         return r
-    
+
+
 class NXTconn(sender):
     def __init__(self):
         self.connect(1, 2)
