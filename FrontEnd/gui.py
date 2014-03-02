@@ -1,57 +1,67 @@
-import sys, time, os
+import sys
+import time
 import cv2
+
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
-from MainApp.mainApp import *
-from Game.basicStructs import *
-from Game.AIlogic import *
+
 import Image.Image as Image
-
-import nxtWindow
 import mainWindow
+import MainApp.mainApp as main
 
 
+ImageProcess = Image.ImageProcess()
 
 image_update_flag = True
-class image_updater(QThread):
+
+
+class Worker(QThread):
     run = 1
     def __init__(self, Main=None):
-        super(image_updater, self).__init__(Main)
+        super(Worker, self).__init__(Main)
         self.ui = Main
+        self.new = False
 
     def run(self):
         while True:
             if image_update_flag:
-                """img = Image.get_img()
+                self.img = Image.get_img()
                 try:
-                    MainApp.proc.frame_table(img, False)
-                    cv2.imwrite("tmp.jpg", MainApp.proc.trimmed)
-                    self.ui.updateImage.emit()
-                    self.ui.add_textFunction("New image")
-                except:"""
-                self.ui.add_text("Cannot connect!")
-            time.sleep(2)
+                    self.table = ImageProcess.frame_table(self.img, False)
+                    cv2.imwrite("tmp.jpg", ImageProcess.trimmed)
+                    self.ui.updateImage()
+                    print "New image"
+                except:
+                    print "Cannot connect!"
+            time.sleep(5)
+            if self.new:
+                main.move(self.table)#self.img)
+                self.new = False
 
+    def new_move(self):
+        self.new = True
 
-def calibrate_image():
-    global image_update_flag
-    image_update_flag = False
-    img = Image.get_img()
-    MainApp.proc.calibrate_board(img)
-    image_update_flag = True
+    def calibrate_image(self):
+        global image_update_flag
+        image_update_flag = False
+        try:
+            img = Image.get_img()
+            ImageProcess.calibrate_board(img)
+        except:
+            print "Cannot connect!"
+        image_update_flag = True
 
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
 
+    global ui
     ui = mainWindow.mainWindow()
     ui.show()
 
-    th = image_updater(ui)
+    th = Worker(ui)
 
-    #ui.register_worker(th)
-    #ui.register_interface(g)
-
+    ui.use_thread(th)
 
     th.start()
 

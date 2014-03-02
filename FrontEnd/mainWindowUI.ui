@@ -34,23 +34,16 @@
      </rect>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>674</x>
       <y>80</y>
       <width>92</width>
-      <height>83</height>
+      <height>112</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
-      <widget class="QPushButton" name="nxtControlButton">
-       <property name="text">
-        <string>NXT control</string>
-       </property>
-      </widget>
-     </item>
      <item row="1" column="0">
       <widget class="QPushButton" name="configButton">
        <property name="text">
@@ -62,6 +55,20 @@
       <widget class="QPushButton" name="calibrateCornersButton">
        <property name="text">
         <string>Calibrate corners</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QPushButton" name="nxtControlButton">
+       <property name="text">
+        <string>NXT control</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QPushButton" name="makeMoveButton">
+       <property name="text">
+        <string>Make move</string>
        </property>
       </widget>
      </item>

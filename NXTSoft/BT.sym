@@ -1,0 +1,343 @@
+#SYMBOLS
+Index	Identifier	Type	Flag	Data	Size	RefCount
+0	__signed_stack_002BTCheck	6	1	0	4	2
+1	__signed_stack_001main	6	1	4	4	10
+2	__signed_stack_002main	6	1	8	4	10
+3	__signed_stack_001BTCheck	6	1	12	4	4
+4	__D0BTCheck	6	1	16	4	4
+5	__D0main	6	1	20	4	10
+6	__SRSTmpLongVal	6	1	24	4	2
+7	__Wait_7qG2_ms_7qG2_000_inline_BTCheck	5	1	28	4	2
+8	__TextOutMutex	9	0	32	4	12
+9	__Wait_7qG2_ms_7qG2_000_inline_main	5	1	36	4	2
+10	__main_7qG2_i_7qG2_000	4	1	40	2	4
+11	__BTCheck_7qG2_conn_7qG2_000	4	1	42	2	2
+12	__zfBTCheck	1	1	44	1	3
+13	__BTCheck_return	1	1	45	1	3
+14	____initialize_global_data_return	1	1	46	1	3
+15	__zfmain	1	1	47	1	2
+16	__constVal5	2	0	48	1	1
+17	__constVal2	2	0	49	1	1
+18	__constVal1	2	0	50	1	4
+19	__constVal3	2	0	51	1	1
+20	__PFTmp	1	1	52	1	1
+21	__CBTCSArgs	8	0	2	4	4
+22	__CBTCSArgs.Result	2	1	56	1	4
+23	__CBTCSArgs.Connection	1	1	57	1	4
+24	__CBTWArgs	8	0	3	8	3
+25	__CBTWArgs.Result	2	1	60	1	3
+26	__CBTWArgs.Connection	1	1	61	1	3
+27	__CBTWArgs.Buffer	7	0	62	4	3
+28	__CBTWArgs.Buffer.Buffer_type	1	0	0	1	0
+29	__TextOutArgs	8	0	4	16	36
+30	__TextOutArgs.Result	2	1	64	1	36
+31	__TextOutArgs.Location	8	0	2	4	36
+32	__TextOutArgs.Location.X	4	1	68	2	36
+33	__TextOutArgs.Location.Y	4	1	70	2	36
+34	__TextOutArgs.Text	7	0	72	4	36
+35	__TextOutArgs.Text.Text_type	1	0	0	1	0
+36	__TextOutArgs.Options	5	1	76	4	36
+37	__MRArgs	8	0	4	8	5
+38	__MRArgs.Result	2	1	80	1	5
+39	__MRArgs.QueueID	1	1	81	1	5
+40	__MRArgs.Remove	1	1	82	1	5
+41	__MRArgs.Message	7	0	84	4	5
+42	__MRArgs.Message.Message_type	1	0	0	1	0
+43	__ArrHelper__main_244_0	7	0	86	4	2
+44	__ArrHelper__main_244_0.__ArrHelper__main_244_0_type	1	0	0	1	0
+45	__constStr0010	7	0	88	4	1
+46	__constStr0010.__constStr0010_type	1	1	0	1	0
+47	__main_7qG2_out_7qG2_000	7	0	90	4	4
+48	__main_7qG2_out_7qG2_000.__main_7qG2_out_7qG2_000_type	1	0	0	1	0
+49	__main_7qG2_iStr_7qG2_000	7	0	92	4	2
+50	__main_7qG2_iStr_7qG2_000.__main_7qG2_iStr_7qG2_000_type	1	0	0	1	0
+51	__constStr0013	7	0	94	4	1
+52	__constStr0013.__constStr0013_type	1	1	0	1	0
+53	__ArrHelper__main_244_1	7	0	96	4	2
+54	__ArrHelper__main_244_1.__ArrHelper__main_244_1_type	1	0	0	1	0
+55	__constStr0011	7	0	98	4	1
+56	__constStr0011.__constStr0011_type	1	1	0	1	0
+57	__constStr0012	7	0	100	4	1
+58	__constStr0012.__constStr0012_type	1	1	0	1	0
+59	__strretvalmain	7	0	102	4	4
+60	__strretvalmain.__strretvalmain_type	1	0	0	1	0
+61	__strbufmain	7	0	104	4	18
+62	__strbufmain.__strbufmain_type	1	0	0	1	0
+63	__SRSTmpBuf	7	0	106	4	6
+64	__SRSTmpBuf.__SRSTmpBuf_type	1	0	0	1	0
+65	__SRSSendBuf	7	0	108	4	2
+66	__SRSSendBuf.__SRSSendBuf_type	1	0	0	1	0
+67	__strbufBTCheck	7	0	110	4	2
+68	__strbufBTCheck.__strbufBTCheck_type	1	0	0	1	0
+69	__main_7qG2_in_7qG2_000	7	0	112	4	2
+70	__main_7qG2_in_7qG2_000.__main_7qG2_in_7qG2_000_type	1	0	0	1	0
+71	__constStr0009	7	0	114	4	1
+72	__constStr0009.__constStr0009_type	1	1	0	1	0
+73	__DCMessageWritePacket	7	0	116	4	1
+74	__DCMessageWritePacket.__DCMessageWritePacket_type	1	0	0	1	0
+#SOURCES
+Clump	Line	PC	Source
+0	12	0	#line 12 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	13	0		subcall __initialize_global_data, ____initialize_global_data_return
+0	12	2	#line 12 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	14	2	#line 14 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	15	2		set __main_7qG2_i_7qG2_000, 0
+0	14	5	#line 14 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	14	5	#line 14 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	15	5		set __BTCheck_7qG2_conn_7qG2_000, 1
+0	14	8	#line 14 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	15	8	#line 15 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	16	8		subcall BTCheck, __BTCheck_return
+0	15	10	#line 15 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	15	10	#line 15 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	16	10		set __D0main, 1
+0	16	13	#line 16 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	17	13		tst 5, __zfmain, __D0main
+0	16	16	#line 16 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	17	16		brtst 4, __NXC_Label_504, __zfmain
+0	16	19	#line 16 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	17	19		mov __D0main, __main_7qG2_i_7qG2_000
+0	17	21	#line 17 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	18	21		numtostr __strretvalmain, __D0main
+0	17	24	#line 17 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	18	24		strcat __strbufmain, __strretvalmain
+0	17	28	#line 17 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	18	28		mov __main_7qG2_iStr_7qG2_000, __strbufmain
+0	17	30	#line 17 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	17	30	#line 17 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	18	30		strcat __strbufmain, __constStr0010
+0	17	34	#line 17 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	18	34		mov __ArrHelper__main_244_0, __strbufmain
+0	17	36	#line 17 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	18	36		strcat __strbufmain, __main_7qG2_iStr_7qG2_000
+0	17	40	#line 17 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	18	40		mov __ArrHelper__main_244_1, __strbufmain
+0	18	42	#line 18 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	19	42		strcat __strretvalmain, __ArrHelper__main_244_0, __ArrHelper__main_244_1
+0	18	47	#line 18 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	19	47		strcat __strbufmain, __strretvalmain
+0	18	51	#line 18 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	19	51		mov __main_7qG2_out_7qG2_000, __strbufmain
+0	18	53	#line 18 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	18	53	#line 18 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	19	53		set __signed_stack_001main, 10
+0	18	56	#line 18 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	18	56	#line 18 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	19	56		set __signed_stack_002main, 56
+0	18	59	#line 18 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	18	59	#line 18 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	19	59		strcat __strbufmain, __constStr0011
+0	19	63	#line 19 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	20	63		acquire __TextOutMutex
+0	19	64	#line 19 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	20	64		mov __TextOutArgs.Location.X, __signed_stack_001main
+0	19	66	#line 19 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	20	66		mov __TextOutArgs.Location.Y, __signed_stack_002main
+0	19	68	#line 19 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	20	68		set __TextOutArgs.Options, 0
+0	19	71	#line 19 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	20	71		mov __TextOutArgs.Text, __strbufmain
+0	19	73	#line 19 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	20	73		syscall 13, __TextOutArgs
+0	19	76	#line 19 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	20	76		mov __D0main, __TextOutArgs.Result
+0	19	78	#line 19 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	20	78		release __TextOutMutex
+0	19	79	#line 19 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	19	79	#line 19 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	20	79		set __signed_stack_001main, 0
+0	19	82	#line 19 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	19	82	#line 19 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	20	82		set __signed_stack_002main, 48
+0	19	85	#line 19 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	19	85	#line 19 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	20	85		strcat __strbufmain, __constStr0012
+0	20	89	#line 20 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	21	89		acquire __TextOutMutex
+0	20	90	#line 20 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	21	90		mov __TextOutArgs.Location.X, __signed_stack_001main
+0	20	92	#line 20 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	21	92		mov __TextOutArgs.Location.Y, __signed_stack_002main
+0	20	94	#line 20 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	21	94		set __TextOutArgs.Options, 0
+0	20	97	#line 20 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	21	97		mov __TextOutArgs.Text, __strbufmain
+0	20	99	#line 20 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	21	99		syscall 13, __TextOutArgs
+0	20	102	#line 20 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	21	102		mov __D0main, __TextOutArgs.Result
+0	20	104	#line 20 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	21	104		release __TextOutMutex
+0	20	105	#line 20 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	20	105	#line 20 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	21	105		set __signed_stack_001main, 0
+0	20	108	#line 20 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	20	108	#line 20 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	21	108		set __signed_stack_002main, 32
+0	20	111	#line 20 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	20	111	#line 20 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	21	111		strcat __strbufmain, __constStr0013
+0	21	115	#line 21 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	22	115		acquire __TextOutMutex
+0	21	116	#line 21 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	22	116		mov __TextOutArgs.Location.X, __signed_stack_001main
+0	21	118	#line 21 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	22	118		mov __TextOutArgs.Location.Y, __signed_stack_002main
+0	21	120	#line 21 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	22	120		set __TextOutArgs.Options, 0
+0	21	123	#line 21 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	22	123		mov __TextOutArgs.Text, __strbufmain
+0	21	125	#line 21 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	22	125		syscall 13, __TextOutArgs
+0	21	128	#line 21 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	22	128		mov __D0main, __TextOutArgs.Result
+0	21	130	#line 21 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	22	130		release __TextOutMutex
+0	21	131	#line 21 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	21	131	#line 21 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	22	131	#pragma macro 7
+0	22	131		mov __MRArgs.QueueID, __constVal1
+0	22	133		mov __MRArgs.Remove, __constVal1
+0	22	135		syscall 27, __MRArgs
+0	22	138		mov __main_7qG2_in_7qG2_000, __MRArgs.Message
+0	22	140		mov __D0main, __MRArgs.Result
+0	3845	142	#line 3845 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	21	142	#line 21 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	21	142	#line 21 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	22	142	#line 22 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	23	142	#pragma macro 13
+0	23	142		mov __SRSTmpBuf, __DCMessageWritePacket
+0	23	144		replace __SRSTmpBuf, __SRSTmpBuf, __constVal2, __constVal5
+0	23	149		arrsize __SRSTmpLongVal, __main_7qG2_out_7qG2_000
+0	23	152		replace __SRSTmpBuf, __SRSTmpBuf, __constVal3, __SRSTmpLongVal
+0	23	157		arrbuild __SRSSendBuf, __SRSTmpBuf, __main_7qG2_out_7qG2_000
+0	23	162		mov __CBTWArgs.Connection, __constVal1
+0	23	164		mov __CBTWArgs.Buffer, __SRSSendBuf
+0	23	166		syscall 29, __CBTWArgs
+0	3849	169	#line 3849 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	22	169	#line 22 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	22	169	#line 22 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	23	169	#line 23 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	24	169		set __signed_stack_001main, 10
+0	23	172	#line 23 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	23	172	#line 23 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	24	172		set __signed_stack_002main, 40
+0	23	175	#line 23 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	23	175	#line 23 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	24	175		strcat __strbufmain, __main_7qG2_in_7qG2_000
+0	24	179	#line 24 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	25	179		acquire __TextOutMutex
+0	24	180	#line 24 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	25	180		mov __TextOutArgs.Location.X, __signed_stack_001main
+0	24	182	#line 24 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	25	182		mov __TextOutArgs.Location.Y, __signed_stack_002main
+0	24	184	#line 24 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	25	184		set __TextOutArgs.Options, 0
+0	24	187	#line 24 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	25	187		mov __TextOutArgs.Text, __strbufmain
+0	24	189	#line 24 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	25	189		syscall 13, __TextOutArgs
+0	24	192	#line 24 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	25	192		mov __D0main, __TextOutArgs.Result
+0	24	194	#line 24 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	25	194		release __TextOutMutex
+0	24	195	#line 24 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	24	195	#line 24 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	25	195		set __signed_stack_001main, 10
+0	24	198	#line 24 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	24	198	#line 24 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	25	198		set __signed_stack_002main, 24
+0	24	201	#line 24 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	24	201	#line 24 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	25	201		strcat __strbufmain, __main_7qG2_out_7qG2_000
+0	25	205	#line 25 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	26	205		acquire __TextOutMutex
+0	25	206	#line 25 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	26	206		mov __TextOutArgs.Location.X, __signed_stack_001main
+0	25	208	#line 25 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	26	208		mov __TextOutArgs.Location.Y, __signed_stack_002main
+0	25	210	#line 25 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	26	210		set __TextOutArgs.Options, 0
+0	25	213	#line 25 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	26	213		mov __TextOutArgs.Text, __strbufmain
+0	25	215	#line 25 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	26	215		syscall 13, __TextOutArgs
+0	25	218	#line 25 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	26	218		mov __D0main, __TextOutArgs.Result
+0	25	220	#line 25 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	26	220		release __TextOutMutex
+0	25	221	#line 25 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	25	221	#line 25 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	26	221		set __Wait_7qG2_ms_7qG2_000_inline_main, 100
+0	25	224	#line 25 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	7921	224	#line 7921 "NXCDefs.h"
+0	7922	224		wait2 NA, __Wait_7qG2_ms_7qG2_000_inline_main
+0	7921	227	#line 7921 "NXCDefs.h"
+0	26	227	#line 26 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	27	227	#line 27 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	28	227		add __main_7qG2_i_7qG2_000, __main_7qG2_i_7qG2_000, __constVal1
+0	27	231	#line 27 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	30	231	#line 30 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	31	231		jmp __NXC_Label_503
+0	30	233	#line 30 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+0	31	233		exit -1, -1
+1	5	0	#line 5 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+1	6	0	#pragma macro 5
+1	6	0		mov __CBTCSArgs.Connection, __BTCheck_7qG2_conn_7qG2_000
+1	6	2		syscall 28, __CBTCSArgs
+1	3612	5	#line 3612 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+1	5	5	#line 5 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+1	6	5		not __signed_stack_001BTCheck, __CBTCSArgs.Result
+1	5	8	#line 5 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+1	5	8	#line 5 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+1	6	8		set __D0BTCheck, 0
+1	5	11	#line 5 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+1	6	11		cmp 4, __zfBTCheck, __signed_stack_001BTCheck, __D0BTCheck
+1	5	15	#line 5 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+1	6	15		mov __D0BTCheck, __zfBTCheck
+1	6	17	#line 6 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+1	7	17		brtst 4, __NXC_Label_490, __zfBTCheck
+1	6	20	#line 6 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+1	7	20		set __signed_stack_001BTCheck, 5
+1	6	23	#line 6 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+1	6	23	#line 6 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+1	7	23		set __signed_stack_002BTCheck, 48
+1	6	26	#line 6 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+1	6	26	#line 6 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+1	7	26		strcat __strbufBTCheck, __constStr0009
+1	7	30	#line 7 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+1	8	30		acquire __TextOutMutex
+1	7	31	#line 7 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+1	8	31		mov __TextOutArgs.Location.X, __signed_stack_001BTCheck
+1	7	33	#line 7 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+1	8	33		mov __TextOutArgs.Location.Y, __signed_stack_002BTCheck
+1	7	35	#line 7 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+1	8	35		set __TextOutArgs.Options, 0
+1	7	38	#line 7 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+1	8	38		mov __TextOutArgs.Text, __strbufBTCheck
+1	7	40	#line 7 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+1	8	40		syscall 13, __TextOutArgs
+1	7	43	#line 7 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+1	8	43		mov __D0BTCheck, __TextOutArgs.Result
+1	7	45	#line 7 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+1	8	45		release __TextOutMutex
+1	7	46	#line 7 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+1	7	46	#line 7 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+1	8	46		set __Wait_7qG2_ms_7qG2_000_inline_BTCheck, 100
+1	7	49	#line 7 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+1	7921	49	#line 7921 "NXCDefs.h"
+1	7922	49		wait2 NA, __Wait_7qG2_ms_7qG2_000_inline_BTCheck
+1	7921	52	#line 7921 "NXCDefs.h"
+1	9	52	#line 9 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+1	11	52	#line 11 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+1	12	52		jmp __NXC_Label_489
+1	11	54	#line 11 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+1	11	54	#line 11 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+1	12	54		subret __BTCheck_return
+2	31	0	#line 31 "C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc"
+2	32	0		subret ____initialize_global_data_return
+#CLUMPS
+Clump	Name	Offset	File
+0	main	0	C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc
+1	BTCheck	236	C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc
+2	__initialize_global_data	292	C:\Users\rexina\repos\Draughts\NXTSoft\BT.nxc

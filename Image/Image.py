@@ -6,16 +6,17 @@ import numpy as np
 
 sys.path.append("../Game")
 sys.path.append("../MainApp")
-import MainApp.conf as conf
-import basicStructs as BS
+
+import Game.basicStructs as BS
 from threading import Timer
 import time
+
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~IMAGE TAKING LIB ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 request = False
 timerStop = False
 def get_img():
-    print "Request!"
+    #print "Request!"
     global request
     request = True
     while request == True:
@@ -24,8 +25,11 @@ def get_img():
     return img
 
 def take_photo():
-    print conf.IP
-    os.system(r"wget --tries 1 --timeout 2 http://" + str(conf.IP) + ":8080/photoaf.jpg -O shot.jpg")# --quiet")
+    #print conf.IP
+    import MainApp.conf as conf
+
+    os.system(r"wget --tries 1 --timeout 2 http://" + str(conf.get('IP')) + ":8080/photoaf.jpg -O shot.jpg --quiet")
+
 
 timer = Timer(0,0)
 
@@ -69,7 +73,8 @@ class ImageProcess:
         self.param2 = 15
         self.fields1 = self.fields2 = []
         self.FieldTable = [[1 for j in xrange(8)] for i in xrange(8)]
-        self.splitPoints = [[458, 333], [458, 692], [817, 327], [826, 692]]
+        #self.splitPoints = [[458, 333], [458, 692], [817, 327], [826, 692]]
+
 
     def calibratation(self, fieldList): # check A1, next via white edge, across board and left corner
         for field in fieldList:
@@ -97,31 +102,38 @@ class ImageProcess:
         self.img = image
 
     def mouseEvent(self, event, x, y, flags, param):
-        global MouseImgCopy, MousePoints
         if event == cv2.EVENT_MOUSEMOVE:
-            cv2.circle(MouseImgCopy, (x, y), 4, (0, 255, 0), -1)
+            self.ImgCopy2 = copy.deepcopy(self.ImgCopy)
+            cv2.circle(self.ImgCopy2, (x, y), 3, (0, 255, 0), -1)
+
         if event == cv2.EVENT_LBUTTONUP:
-            MousePoints.append([x, y])
-            cv2.circle(MouseImgCopy, (x, y), 4, (255, 0, 0), -1)
+            self.splitPointsTemp.append([x, y])
+            cv2.circle(self.ImgCopy, (x, y), 3, (255, 255, 255), -1)
+            self.ImgCopy2 = copy.deepcopy(self.ImgCopy)
 
     def calibrate_board(self,img):
+        import MainApp.conf as conf
+
         self.img = img
-        global MouseImgCopy, MousePoints
-        MousePoints = self.splitPoints
-        MouseImgCopy = copy.deepcopy(self.img)
+        self.ImgCopy = copy.deepcopy(self.img)
+        self.ImgCopy2 = copy.deepcopy(self.img)
         cv2.namedWindow('image')
         cv2.setMouseCallback('image', self.mouseEvent)
-        MousePoints = []
+        self.splitPointsTemp = []
         while True:
-            cv2.imshow('image', MouseImgCopy)
-            if len(MousePoints) == 4 or cv2.waitKey(1) & 0xFF == 27:
+            cv2.imshow('image', self.ImgCopy2)
+            if len(self.splitPointsTemp) == 4 or cv2.waitKey(1) & 0xFF == 27:
                 break
-        if len(MousePoints) == 4:
-            self.splitPoints = MousePoints
-        print self.splitPoints
+        if len(self.splitPointsTemp) == 4:
+            self.splitPoints = self.splitPointsTemp
+            #print self.splitPoints
+        conf.set('splitPoints', self.splitPoints)
         cv2.destroyAllWindows()
 
     def imageSplit(self):
+        import MainApp.conf as conf
+
+        self.splitPoints = eval(conf.get('splitPoints'))
         if len(self.splitPoints) != 4:
             print "Board not detected!"
             sys.exit(0)
@@ -192,22 +204,24 @@ class ImageProcess:
         return rotatedBoard
 
     def searchForPawn(self, img, pos, returnColorValue=False):
+        import MainApp.conf as conf
+
         """function returns:
         0 - no figure
         1 - white
         -1 - black"""
 
-        threshold = 500
-
         img2 = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        img2 = cv2.medianBlur(img2, 7)
+        img2 = cv2.medianBlur(img2, 5)
         #cimg = cv2.cvtColor(img,cv2.COLOR_GRAY2BGR)
         edges = cv2.GaussianBlur(img2, (3, 3), 0)
-        edges = cv2.Canny(edges, 50, 100)
+
+        edges = cv2.Canny(edges, 90, 200)
+        #show_image(edges)
 
         x, dst = cv2.threshold(img2, 50, 255, cv2.THRESH_BINARY)
         #show_image(dst)
-        #show_image(edges)
+
 
         circles = cv2.HoughCircles(edges, cv2.cv.CV_HOUGH_GRADIENT, 1, 20,
                                    param1=70,
@@ -226,7 +240,7 @@ class ImageProcess:
         d = int(i[2] / 1.6)
         x = i[0]
         y = i[1]
-        cv2.rectangle(img, (x - d, y - d), (x + d, y + d), (0, 255, 0))
+        #cv2.rectangle(img, (x - d, y - d), (x + d, y + d), (0, 255, 0))
         sums = [0.0, 0.0, 0.0]
         divi = 0
         for row in dst[x - d:x + d, y - d:y + d]:
@@ -247,23 +261,23 @@ class ImageProcess:
 
         if returnColorValue:
             return suma
-            #print pos," -> ",suma,"\t|\t",self.Threshold[pos[0]][pos[1]]
-        #print "suma =",suma
-        if suma > conf.threshold:#self.Threshold[pos[0]][pos[1]]:
+        thr = int(conf.get('threshold'))
+        #print thr, suma
+        if suma > thr:
             #print "WHITE PAWN"
             cv2.circle(img, (i[0], i[1]), i[2], (0, 255, 0), 2)
-            cv2.circle(img, (i[0], i[1]), 2, (0, 0, 255), 3)
+            #cv2.circle(img, (i[0], i[1]), 2, (0, 0, 255), 3)
 
         else:
             #print "BLACK PAWN"
             cv2.circle(img, (i[0], i[1]), i[2], (0, 0, 255), 2)
-            cv2.circle(img, (i[0], i[1]), 2, (0, 0, 255), 3)
+            #cv2.circle(img, (i[0], i[1]), 2, (0, 0, 255), 3)
 
         #cv2.imshow('detected circles', img)
         #cv2.waitKey(0)
         #cv2.destroyAllWindows()
 
-        if suma > conf.threshold:##self.Threshold[pos[0]][pos[1]]:
+        if suma > thr:##self.Threshold[pos[0]][pos[1]]:
             return 1
         else:
             return -1

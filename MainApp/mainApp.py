@@ -1,17 +1,56 @@
-import copy
-import sys
-import cv2
-from PyQt4.QtCore import *
-from Game.basicStructs import *
 from Game.AIlogic import *
 import Image.Image as Image
 
 
+a = Board()
+
+for i in range(0, 8, 2):
+    a.set(i, 0, Field.AI)
+    a.set(i, 6, Field.HU)
+
+for i in range(1, 8, 2):
+    a.set(i, 1, Field.AI)
+    a.set(i, 7, Field.HU)
+
+print a
+turns = 0
+
+proc = Image.ImageProcess()
 
 
-class MainApp(QThread):
-    proc = Image.ImageProcess()
+def move(table):
+    global a, turns
+    #img = Image.take_photo()
+    #b = proc.frame_table(img, False)
+    After = a.boardFromCamera(table)
 
+    if After is not None:
+        print "OK"
+        bads = 0
+        a = After
+        ok = 1
+
+        sys.stdout.write("Turn " + str(turns))
+        turns += 1
+        res = minimaks(copy.deepcopy(a), 6)
+        print "White:", res[1]
+        a.executeMove(res[1])
+        print "After Move:\n", a
+
+        if a.gameWon() == 1:
+            print "AI won!"
+        else:
+            print "Human won!"
+        print "In", turns, "turns."
+
+    else:
+        print "Bad Move! Try again!\nPrevious board:"
+        print a
+        print "Actual board:"
+        print table
+
+
+"""class MainApp(QThread):
     def run(self):
         a = Board()
         #img = Image.take_photo()
@@ -59,8 +98,7 @@ class MainApp(QThread):
             print "White:", res[1]
             a.executeMove(res[1])
             print "After Move:\n", a
-            if a.gameWon() != 0:
-                break
+
 
         print a
         if a.gameWon() == 1:
@@ -69,4 +107,4 @@ class MainApp(QThread):
             print "Human won!"
         print "In", turns, "turns."
 
-
+"""

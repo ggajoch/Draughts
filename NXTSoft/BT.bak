@@ -1,0 +1,29 @@
+//MASTER
+#define BT_CONN 1
+#define INBOX 1
+#define OUTBOX 5
+sub BTCheck(int conn){
+    while (!BluetoothStatus(conn)==NO_ERR){
+       TextOut(5,LCD_LINE2,"Error conn");
+        Wait(100);
+        //Stop(true);
+    }
+}
+task main(){
+  string in, out, iStr;
+	int i = 0;
+	BTCheck(BT_CONN); //check slave connection
+	while(true){
+		iStr = NumToStr(i);
+		out = StrCat("M",iStr);
+		TextOut(10,LCD_LINE1,"Master Test");
+		TextOut(0,LCD_LINE2,"IN:");
+		TextOut(0,LCD_LINE4,"OUT:");
+		ReceiveRemoteString(INBOX, true, in);
+		SendRemoteString(BT_CONN,OUTBOX,out);
+		TextOut(10,LCD_LINE3,in);
+		TextOut(10,LCD_LINE5,out);
+		Wait(100);
+		i++;
+	}
+}
