@@ -44,11 +44,11 @@ def move(table):
 
     res = a.gameWon()
     if res != 0:
-        if res == 1
-        print "AI won!"
-    else:
-        print "Human won!"
-    print "In", turns, "turns."
+        if res == 1:
+            print "AI won!"
+        else:
+            print "Human won!"
+        print "In", turns, "turns."
 
 
 """class MainApp(QThread):
