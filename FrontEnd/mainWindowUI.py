@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainWindowUI.ui'
 #
-# Created: Sat Mar 01 03:06:56 2014
+# Created: Sun Mar 02 21:55:18 2014
 #      by: PyQt4 UI code generator 4.10.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -28,12 +28,9 @@ except AttributeError:
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(1143, 657)
+        MainWindow.resize(1103, 674)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
-        self.image = QtGui.QGraphicsView(self.centralwidget)
-        self.image.setGeometry(QtCore.QRect(20, 10, 605, 605))
-        self.image.setObjectName(_fromUtf8("image"))
         self.movesList = QtGui.QTextBrowser(self.centralwidget)
         self.movesList.setGeometry(QtCore.QRect(840, 20, 256, 471))
         self.movesList.setObjectName(_fromUtf8("movesList"))
@@ -55,9 +52,32 @@ class Ui_MainWindow(object):
         self.makeMoveButton = QtGui.QPushButton(self.layoutWidget)
         self.makeMoveButton.setObjectName(_fromUtf8("makeMoveButton"))
         self.gridLayout.addWidget(self.makeMoveButton, 3, 0, 1, 1)
+        self.tabWidget = QtGui.QTabWidget(self.centralwidget)
+        self.tabWidget.setGeometry(QtCore.QRect(0, 0, 612, 631))
+        self.tabWidget.setObjectName(_fromUtf8("tabWidget"))
+        self.Image = QtGui.QWidget()
+        self.Image.setObjectName(_fromUtf8("Image"))
+        self.imageNormal = QtGui.QGraphicsView(self.Image)
+        self.imageNormal.setGeometry(QtCore.QRect(0, 0, 605, 605))
+        self.imageNormal.setObjectName(_fromUtf8("imageNormal"))
+        self.tabWidget.addTab(self.Image, _fromUtf8(""))
+        self.tab_2 = QtGui.QWidget()
+        self.tab_2.setObjectName(_fromUtf8("tab_2"))
+        self.imageEdges = QtGui.QGraphicsView(self.tab_2)
+        self.imageEdges.setGeometry(QtCore.QRect(0, 0, 605, 605))
+        self.imageEdges.setObjectName(_fromUtf8("imageEdges"))
+        self.tabWidget.addTab(self.tab_2, _fromUtf8(""))
+        self.text = QtGui.QLabel(self.centralwidget)
+        self.text.setGeometry(QtCore.QRect(660, 530, 381, 71))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Comic Sans MS"))
+        font.setPointSize(36)
+        self.text.setFont(font)
+        self.text.setText(_fromUtf8(""))
+        self.text.setObjectName(_fromUtf8("text"))
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1143, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1103, 21))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtGui.QStatusBar(MainWindow)
@@ -65,6 +85,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -73,4 +94,6 @@ class Ui_MainWindow(object):
         self.calibrateCornersButton.setText(_translate("MainWindow", "Calibrate corners", None))
         self.nxtControlButton.setText(_translate("MainWindow", "NXT control", None))
         self.makeMoveButton.setText(_translate("MainWindow", "Make move", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.Image), _translate("MainWindow", "Image", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "Edges", None))
 

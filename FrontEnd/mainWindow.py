@@ -1,12 +1,14 @@
+import cv2
+
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 
 import MainApp.conf as config
-
 import nxtWindow
 import configWindow
 import mainWindowUI as ui
 import gui
+
 
 class mainWindow(QMainWindow, ui.Ui_MainWindow):
     def __init__(self, parent=None):
@@ -52,7 +54,16 @@ class mainWindow(QMainWindow, ui.Ui_MainWindow):
         self.emit(SIGNAL("image_update"), self.updateImageHadler)
 
     def updateImageHadler(self):
-        myPixmap = QPixmap(QString.fromUtf8('tmp.jpg'))
+        cvRGBImg = cv2.cvtColor(self.imgEdges, cv2.COLOR_GRAY2RGB)
+        qimg = QImage(cvRGBImg.data, cvRGBImg.shape[1], cvRGBImg.shape[0], QImage.Format_RGB888)
+        qpm = QPixmap.fromImage(qimg)
         scene = QGraphicsScene()
-        scene.addPixmap(myPixmap)
-        self.image.setScene(scene)
+        scene.addPixmap(qpm)
+        self.imageEdges.setScene(scene)
+
+        cvRGBImg = cv2.cvtColor(self.imgNormal, cv2.cv.CV_BGR2RGB)
+        qimg = QImage(cvRGBImg.data, cvRGBImg.shape[1], cvRGBImg.shape[0], QImage.Format_RGB888)
+        qpm = QPixmap.fromImage(qimg)
+        scene = QGraphicsScene()
+        scene.addPixmap(qpm)
+        self.imageNormal.setScene(scene)

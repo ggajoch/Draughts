@@ -36,18 +36,19 @@ def move(table):
         print "White:", res[1]
         a.executeMove(res[1])
         print "After Move:\n", a
-
-        if a.gameWon() == 1:
-            print "AI won!"
-        else:
-            print "Human won!"
-        print "In", turns, "turns."
-
     else:
         print "Bad Move! Try again!\nPrevious board:"
         print a
         print "Actual board:"
         print table
+
+    res = a.gameWon()
+    if res != 0:
+        if res == 1
+        print "AI won!"
+    else:
+        print "Human won!"
+    print "In", turns, "turns."
 
 
 """class MainApp(QThread):

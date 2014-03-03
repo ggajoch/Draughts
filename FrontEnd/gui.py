@@ -1,6 +1,5 @@
 import sys
 import time
-import cv2
 
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
@@ -28,12 +27,13 @@ class Worker(QThread):
                 self.img = Image.get_img()
                 try:
                     self.table = ImageProcess.frame_table(self.img, False)
-                    cv2.imwrite("tmp.jpg", ImageProcess.trimmed)
+                    self.ui.imgNormal = ImageProcess.trimmed
+                    self.ui.imgEdges = ImageProcess.edgesImage
                     self.ui.updateImage()
                     print "New image"
-                except:
-                    print "Cannot connect!"
-            time.sleep(5)
+                except Exception as ex:
+                    print "Error!", ex
+            time.sleep(0.1)
             if self.new:
                 main.move(self.table)#self.img)
                 self.new = False

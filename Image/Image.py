@@ -2,14 +2,13 @@ import cv2
 import copy
 import sys
 import os
-import numpy as np
-
-sys.path.append("../Game")
-sys.path.append("../MainApp")
-
-import Game.basicStructs as BS
 from threading import Timer
 import time
+
+import numpy as np
+
+import Game.basicStructs as BS
+
 
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~IMAGE TAKING LIB ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -28,7 +27,7 @@ def take_photo():
     #print conf.IP
     import MainApp.conf as conf
 
-    os.system(r"wget --tries 1 --timeout 2 http://" + str(conf.get('IP')) + ":8080/photoaf.jpg -O shot.jpg --quiet")
+    os.system(r"wget --tries 1 --timeout 3 http://" + str(conf.get('IP')) + ":8080/photoaf.jpg -O shot.jpg --quiet")
 
 
 timer = Timer(0,0)
@@ -136,12 +135,23 @@ class ImageProcess:
         self.splitPoints = eval(conf.get('splitPoints'))
         if len(self.splitPoints) != 4:
             print "Board not detected!"
-            sys.exit(0)
         rows, cols, ch = self.img.shape
         pts1 = np.float32(self.splitPoints)
         pts2 = np.float32([[0, 0], [600, 0], [0, 600], [600, 600]])
         M = cv2.getPerspectiveTransform(pts1, pts2)
         self.trimmed = cv2.warpPerspective(self.img, M, (600, 600))
+        self.edgesImage = cv2.warpPerspective(self.edgesImage, M, (600, 600))
+
+        #~~~~~~~~~~~~~~IMAGE ROTATION~~~~~~~~~~~~
+
+        #rows, cols, depth = self.trimmed.shape
+
+        #M = cv2.getRotationMatrix2D((cols/2, rows/2), 90, 1)
+        #self.trimmed = cv2.warpAffine(self.trimmed, M, (cols, rows))
+
+
+        #~~~~~~~~~~~~~~IMAGE ROTATION~~~~~~~~~~~~
+
         points = []
         for i in range(1, 602, 75):
             for j in range(1, 602, 75):
@@ -169,6 +179,11 @@ class ImageProcess:
                 cv2.circle(self.trimmed, (x2, y2), 2, (0, 0, 255))
 
     def frame_table(self, image, AIIsWhite):
+        img2 = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        img2 = cv2.medianBlur(img2, 5)
+        self.edgesImage = cv2.GaussianBlur(img2, (3, 3), 0)
+        self.edgesImage = cv2.Canny(self.edgesImage, 90, 200)
+
         self.img = copy.deepcopy(image)
         self.imageSplit()
 
@@ -203,6 +218,7 @@ class ImageProcess:
 
         return rotatedBoard
 
+
     def searchForPawn(self, img, pos, returnColorValue=False):
         import MainApp.conf as conf
 
@@ -213,12 +229,9 @@ class ImageProcess:
 
         img2 = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         img2 = cv2.medianBlur(img2, 5)
-        #cimg = cv2.cvtColor(img,cv2.COLOR_GRAY2BGR)
         edges = cv2.GaussianBlur(img2, (3, 3), 0)
-
         edges = cv2.Canny(edges, 90, 200)
         #show_image(edges)
-
         x, dst = cv2.threshold(img2, 50, 255, cv2.THRESH_BINARY)
         #show_image(dst)
 
@@ -230,7 +243,7 @@ class ImageProcess:
                                    maxRadius=0)
 
         #print circles
-        if circles is None or len(circles[0]) > 1:
+        if circles is None: #or len(circles[0]) > 1:
             #print "NO_PAWN"
             return 0
 
@@ -266,12 +279,12 @@ class ImageProcess:
         if suma > thr:
             #print "WHITE PAWN"
             cv2.circle(img, (i[0], i[1]), i[2], (0, 255, 0), 2)
-            #cv2.circle(img, (i[0], i[1]), 2, (0, 0, 255), 3)
+            cv2.circle(self.edgesImage, (i[0], i[1]), i[2], (0, 255, 0), 2)
 
         else:
             #print "BLACK PAWN"
             cv2.circle(img, (i[0], i[1]), i[2], (0, 0, 255), 2)
-            #cv2.circle(img, (i[0], i[1]), 2, (0, 0, 255), 3)
+            cv2.circle(self.edgesImage, (i[0], i[1]), i[2], (0, 0, 255), 2)
 
         #cv2.imshow('detected circles', img)
         #cv2.waitKey(0)
