@@ -2,15 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a62f60b-1eaf-4646-b5ad-2ab78c745018" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FrontEnd/mainWindowUI.ui" afterPath="$PROJECT_DIR$/FrontEnd/mainWindowUI.ui" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FrontEnd/configWindowUI.ui" afterPath="$PROJECT_DIR$/FrontEnd/configWindowUI.ui" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FrontEnd/shot.jpg" afterPath="$PROJECT_DIR$/FrontEnd/shot.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FrontEnd/tmp.jpg" afterPath="$PROJECT_DIR$/FrontEnd/tmp.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Image/Image.py" afterPath="$PROJECT_DIR$/Image/Image.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/conf.cfg" afterPath="$PROJECT_DIR$/MainApp/conf.cfg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FrontEnd/configWindow.py" afterPath="$PROJECT_DIR$/FrontEnd/configWindow.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FrontEnd/configWindowUI.py" afterPath="$PROJECT_DIR$/FrontEnd/configWindowUI.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FrontEnd/gui.py" afterPath="$PROJECT_DIR$/FrontEnd/gui.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/mainApp.py" afterPath="$PROJECT_DIR$/MainApp/mainApp.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FrontEnd/mainWindow.py" afterPath="$PROJECT_DIR$/FrontEnd/mainWindow.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FrontEnd/mainWindowUI.py" afterPath="$PROJECT_DIR$/FrontEnd/mainWindowUI.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Draughts.iws" />
@@ -32,10 +31,10 @@
     <SUITE FILE_PATH="coverage/Draughts$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1392498152196" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/FrontEnd" />
     <SUITE FILE_PATH="coverage/Draughts$Python_Console.coverage" NAME="Python Console Coverage Results" MODIFIED="1385680621491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Draughts$mainApp.coverage" NAME="mainApp Coverage Results" MODIFIED="1392510435138" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MainApp" />
-    <SUITE FILE_PATH="coverage/Draughts$gui.coverage" NAME="gui Coverage Results" MODIFIED="1393807826320" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/FrontEnd" />
+    <SUITE FILE_PATH="coverage/Draughts$gui.coverage" NAME="gui Coverage Results" MODIFIED="1393890199909" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/FrontEnd" />
     <SUITE FILE_PATH="coverage/Draughts$nxtWindow.coverage" NAME="nxtWindow Coverage Results" MODIFIED="1392770005746" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/FrontEnd" />
-    <SUITE FILE_PATH="coverage/Draughts$main.coverage" NAME="main Coverage Results" MODIFIED="1389619835987" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Draughts$conf.coverage" NAME="conf Coverage Results" MODIFIED="1393727144515" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MainApp" />
+    <SUITE FILE_PATH="coverage/Draughts$main.coverage" NAME="main Coverage Results" MODIFIED="1389619835987" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Draughts$splitBoard.coverage" NAME="splitBoard Coverage Results" MODIFIED="1386260178662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Image" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -52,19 +51,10 @@
     <splitter split-orientation="horizontal" split-proportion="0.4184839">
       <split-first>
         <leaf>
-          <file leaf-file-name="nxtWindowUI.py" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/FrontEnd/nxtWindowUI.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="114" column="17" selection-start="5182" selection-end="5182" vertical-scroll-proportion="0.0" vertical-offset="1938" max-vertical-offset="2091">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="NXTmail.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/NXTprotocol/NXTmail.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="14" column="14" selection-start="239" selection-end="239" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="1122">
+                <state line="15" column="14" selection-start="274" selection-end="274" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1122">
                   <folding />
                 </state>
               </provider>
@@ -73,27 +63,43 @@
           <file leaf-file-name="configWindow.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/FrontEnd/configWindow.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="7" column="26" selection-start="239" selection-end="239" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="221">
+                <state line="8" column="0" selection-start="240" selection-end="240" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="mainWindow.py" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/FrontEnd/mainWindow.py">
+          <file leaf-file-name="conf.cfg" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/MainApp/conf.cfg">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="12" column="26" selection-start="330" selection-end="330" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="1207">
-                  <folding>
-                    <element signature="e#0#26#0" expanded="true" />
-                  </folding>
+                <state line="5" column="6" selection-start="122" selection-end="122" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
+                  <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="mainApp.py" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="configWindowUI.py" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/FrontEnd/configWindowUI.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="1269" max-vertical-offset="2805">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="mainWindow.py" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/FrontEnd/mainWindow.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="45" column="38" selection-start="1457" selection-end="1457" vertical-scroll-proportion="0.30136988" vertical-offset="414" max-vertical-offset="1190">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="mainApp.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/MainApp/mainApp.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="45" column="14" selection-start="885" selection-end="885" vertical-scroll-proportion="0.4527027" vertical-offset="480" max-vertical-offset="1972">
+                <state line="83" column="14" selection-start="1804" selection-end="1804" vertical-scroll-proportion="0.0" vertical-offset="700" max-vertical-offset="1972">
                   <folding />
                 </state>
               </provider>
@@ -103,24 +109,20 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="gui.py" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="gui.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/FrontEnd/gui.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="36" column="26" selection-start="915" selection-end="915" vertical-scroll-proportion="0.8994709" vertical-offset="102" max-vertical-offset="1326">
-                  <folding>
-                    <element signature="e#0#10#0" expanded="true" />
-                  </folding>
+                <state line="30" column="9" selection-start="697" selection-end="697" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1241">
+                  <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Image.py" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="Image.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Image/Image.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="147" column="9" selection-start="4649" selection-end="4649" vertical-scroll-proportion="-14.36" vertical-offset="2140" max-vertical-offset="5559">
-                  <folding>
-                    <element signature="e#0#10#0" expanded="true" />
-                  </folding>
+                <state line="225" column="27" selection-start="7304" selection-end="7304" vertical-scroll-proportion="0.6636225" vertical-offset="3236" max-vertical-offset="5542">
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -152,19 +154,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="configWindowUI.py" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/FrontEnd/configWindowUI.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="52" column="29" selection-start="2023" selection-end="2023" vertical-scroll-proportion="0.0" vertical-offset="706" max-vertical-offset="1615">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="nxt.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/NXTprotocol/nxt.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="7" column="8" selection-start="94" selection-end="98" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="476">
+                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
                   <folding />
                 </state>
               </provider>
@@ -173,7 +166,7 @@
           <file leaf-file-name="nxtWindow.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/FrontEnd/nxtWindow.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="8" column="26" selection-start="260" selection-end="260" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="442">
+                <state line="3" column="0" selection-start="78" selection-end="78" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="442">
                   <folding />
                 </state>
               </provider>
@@ -212,23 +205,23 @@
         <option value="$PROJECT_DIR$/FrontEnd/mainUI.py" />
         <option value="$PROJECT_DIR$/FrontEnd/nxtWindow.py" />
         <option value="$PROJECT_DIR$/FrontEnd/nxtWindowUI.py" />
-        <option value="$PROJECT_DIR$/FrontEnd/configWindow.py" />
         <option value="$PROJECT_DIR$/FrontEnd/mainWindowUI.py" />
         <option value="$PROJECT_DIR$/Game/basicStructs.py" />
         <option value="$PROJECT_DIR$/MainApp/conf.py" />
+        <option value="$PROJECT_DIR$/MainApp/mainApp.py" />
         <option value="$PROJECT_DIR$/MainApp/conf.cfg" />
+        <option value="$PROJECT_DIR$/FrontEnd/configWindow.py" />
+        <option value="$PROJECT_DIR$/FrontEnd/gui.py" />
         <option value="$PROJECT_DIR$/FrontEnd/mainWindow.py" />
         <option value="$PROJECT_DIR$/Image/Image.py" />
-        <option value="$PROJECT_DIR$/FrontEnd/gui.py" />
-        <option value="$PROJECT_DIR$/MainApp/mainApp.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="54" />
-    <option name="y" value="-8" />
-    <option name="width" value="2514" />
-    <option name="height" value="1456" />
+    <option name="x" value="1592" />
+    <option name="y" value="-689" />
+    <option name="width" value="1296" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -256,7 +249,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -347,21 +339,22 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="C:/cygwin64/bin/git.exe" />
     <property name="FullScreen" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
-      <PyConsoleSettings />
+      <console-settings />
     </option>
   </component>
   <component name="RecentsManager">
@@ -551,9 +544,6 @@
       <option name="PARAMETERS" value="" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
-      <method />
-    </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -575,6 +565,9 @@
       <option name="PUREUNITTEST" value="true" />
       <option name="PARAMS" value="" />
       <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -710,24 +703,24 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="54" y="-8" width="2514" height="1456" extended-state="6" />
-    <editor active="false" />
+    <frame x="1592" y="-689" width="1296" height="1040" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.08481532" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972136" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.112561174" sideWeight="0.4742901" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17098865" sideWeight="0.8101695" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39799845" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2927383" sideWeight="0.44395515" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5257099" sideWeight="0.5560448" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18983051" sideWeight="0.5560448" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22058824" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32753405" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32753405" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24967825" sideWeight="0.7174211" order="2" side_tool="false" content_ui="combo" />
@@ -763,16 +756,9 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FrontEnd/configWindowUI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="29" selection-start="2023" selection-end="2023" vertical-scroll-proportion="0.0" vertical-offset="706" max-vertical-offset="1615">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FrontEnd/nxtWindow.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="26" selection-start="260" selection-end="260" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
+        <state line="3" column="0" selection-start="78" selection-end="78" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="442">
           <folding />
         </state>
       </provider>
@@ -794,28 +780,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FrontEnd/nxtWindowUI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="114" column="17" selection-start="5182" selection-end="5182" vertical-scroll-proportion="0.0" vertical-offset="1148" max-vertical-offset="2057">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Python27/Lib/ConfigParser.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="329" column="0" selection-start="11155" selection-end="11155" vertical-scroll-proportion="0.5694444" vertical-offset="5101" max-vertical-offset="12903" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FrontEnd/configWindow.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="26" selection-start="239" selection-end="239" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="187">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainApp/conf.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="62" selection-start="101" selection-end="101" vertical-scroll-proportion="0.057239056" vertical-offset="0" max-vertical-offset="891" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MainApp/conf.py">
@@ -825,41 +792,61 @@
     </entry>
     <entry file="file://C:/Python27/Lib/site-packages/numpy/core/getlimits.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="22" selection-start="276" selection-end="276" vertical-scroll-proportion="0.22835821" vertical-offset="0" max-vertical-offset="5219">
+        <state line="12" column="22" selection-start="276" selection-end="276" vertical-scroll-proportion="0.22835821" vertical-offset="0" max-vertical-offset="5219" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NXTprotocol/NXTmail.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="14" selection-start="274" selection-end="274" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1122">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainApp/conf.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="6" selection-start="122" selection-end="122" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainApp/mainApp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="14" selection-start="1804" selection-end="1804" vertical-scroll-proportion="0.0" vertical-offset="1244" max-vertical-offset="1972">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FrontEnd/configWindowUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1751">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FrontEnd/gui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="9" selection-start="697" selection-end="697" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1241">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FrontEnd/configWindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="0" selection-start="240" selection-end="240" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FrontEnd/mainWindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="38" selection-start="1457" selection-end="1457" vertical-scroll-proportion="0.30136988" vertical-offset="414" max-vertical-offset="1190">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Image/Image.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="147" column="9" selection-start="4649" selection-end="4649" vertical-scroll-proportion="-14.36" vertical-offset="2140" max-vertical-offset="5559">
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FrontEnd/gui.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="26" selection-start="915" selection-end="915" vertical-scroll-proportion="0.8994709" vertical-offset="102" max-vertical-offset="1326">
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FrontEnd/mainWindow.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="26" selection-start="330" selection-end="330" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="1207">
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainApp/mainApp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="14" selection-start="885" selection-end="885" vertical-scroll-proportion="0.4527027" vertical-offset="480" max-vertical-offset="1972">
+        <state line="225" column="27" selection-start="7304" selection-end="7304" vertical-scroll-proportion="0.6636225" vertical-offset="3236" max-vertical-offset="5542">
           <folding />
         </state>
       </provider>

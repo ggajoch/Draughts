@@ -41,13 +41,19 @@ class mainWindow(QMainWindow, ui.Ui_MainWindow):
         ui.exec_()
 
     def configButton_click(self):
+        import MainApp.conf as conf
+
         ui = configWindow.configWindow(self)
+        ui.WorkingThread = self.thread
         ui.lineEdit.setText(config.get('IP'))
-        ui.spinBox.setValue(int(config.get('threshold')))
+        ui.colorThresholdVal.setValue(int(config.get('threshold')))
+        ui.p1.setValue(int(conf.get('param1')))
+        ui.p2.setValue(int(conf.get('param2')))
+
         if ui.exec_():
             config.set('IP', ui.lineEdit.text())
             #config.IP = ui.lineEdit.text()
-            config.set('threshold', ui.spinBox.value())
+            config.set('threshold', ui.colorThresholdVal.value())
             #config.threshold = ui.spinBox.value()
 
     def updateImage(self):

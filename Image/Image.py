@@ -1,7 +1,6 @@
 import cv2
 import copy
 import sys
-import os
 from threading import Timer
 import time
 
@@ -26,8 +25,13 @@ def get_img():
 def take_photo():
     #print conf.IP
     import MainApp.conf as conf
+    import urllib
 
-    os.system(r"wget --tries 1 --timeout 3 http://" + str(conf.get('IP')) + ":8080/photoaf.jpg -O shot.jpg --quiet")
+    try:
+        urllib.urlretrieve("http://" + str(conf.get('IP')) + ":8080/shot.jpg", "shot.jpg")
+    except:
+        print "Cannot connect!"
+        #os.system(r"wget --tries 1 --timeout 3 http://" + str(conf.get('IP')) + ":8080/shot.jpg -O shot.jpg --quiet")
 
 
 timer = Timer(0,0)
@@ -179,10 +183,13 @@ class ImageProcess:
                 cv2.circle(self.trimmed, (x2, y2), 2, (0, 0, 255))
 
     def frame_table(self, image, AIIsWhite):
+        import MainApp.conf as conf
+
         img2 = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        img2 = cv2.medianBlur(img2, 5)
-        self.edgesImage = cv2.GaussianBlur(img2, (3, 3), 0)
-        self.edgesImage = cv2.Canny(self.edgesImage, 90, 200)
+        #img2 = cv2.medianBlur(img2, 5)
+        #self.edgesImage = cv2.GaussianBlur(img2, (3, 3), 0)
+        self.edgesImage = copy.deepcopy(image)
+        self.edgesImage = cv2.Canny(self.edgesImage, float(conf.get('param1')), float(conf.get('param2'))) #90, 200
 
         self.img = copy.deepcopy(image)
         self.imageSplit()

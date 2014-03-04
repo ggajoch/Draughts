@@ -21,18 +21,23 @@ class Worker(QThread):
         self.ui = Main
         self.new = False
 
+    def calc_image(self):
+        #try:
+        self.ui.imgNormal = self.img
+        self.ui.imgEdges = self.img
+        self.table = ImageProcess.frame_table(self.img, False)
+        self.ui.imgNormal = ImageProcess.trimmed
+        self.ui.imgEdges = ImageProcess.edgesImage
+        self.ui.updateImage()
+        #print "New image"
+        #except Exception as ex:
+        #    print "Error!", ex
+
     def run(self):
         while True:
             if image_update_flag:
                 self.img = Image.get_img()
-                try:
-                    self.table = ImageProcess.frame_table(self.img, False)
-                    self.ui.imgNormal = ImageProcess.trimmed
-                    self.ui.imgEdges = ImageProcess.edgesImage
-                    self.ui.updateImage()
-                    print "New image"
-                except Exception as ex:
-                    print "Error!", ex
+                self.calc_image()
             time.sleep(0.1)
             if self.new:
                 main.move(self.table)#self.img)
