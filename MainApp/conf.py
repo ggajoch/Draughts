@@ -1,19 +1,21 @@
 import ConfigParser
 import os
 
-file = os.path.dirname(__file__) + '\conf.cfg'
+file = os.path.dirname(__file__) + '/conf.cfg'
+
+config = ConfigParser.RawConfigParser()
+config.readfp(open(file))
 
 
 def get(variable):
-    config = ConfigParser.RawConfigParser()
-    config.readfp(open(file))
     return config.get('1', variable)
 
 
 def set(variable, value):
-    config = ConfigParser.RawConfigParser()
-    config.readfp(open(file))
     config.set('1', variable, value)
+
+
+def save_config():
     try:
         with open(file, 'wb') as configfile:
             config.write(configfile)
@@ -36,6 +38,10 @@ def build_default_config():
 
 if __name__ == "__main__":
     print os.path.dirname(__file__) + '/conf.cfg'
+    print get('IP')
+    set('IP', 192)
+
+    print get('IP')
 """    print get('IP')
     set('IP',"192.168.1.101")
     print get('IP')

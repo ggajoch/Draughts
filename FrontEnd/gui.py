@@ -5,6 +5,7 @@ from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 
 import Image.Image as Image
+import Image.takeImage as Shooter
 import mainWindow
 import MainApp.mainApp as main
 
@@ -18,6 +19,7 @@ class Worker(QThread):
     run = 1
     def __init__(self, Main=None):
         super(Worker, self).__init__(Main)
+        #self.ui = mainWindow.mainWindow()
         self.ui = Main
         self.new = False
 
@@ -36,8 +38,13 @@ class Worker(QThread):
     def run(self):
         while True:
             if image_update_flag:
-                self.img = Image.get_img()
-                self.calc_image()
+                self.img = Shooter.get_img()
+                if self.img is None:
+                    print "Cannot connect!"
+                    self.ui.setConnectionStatus(False)
+                else:
+                    self.ui.setConnectionStatus(True)
+                    self.calc_image()
             time.sleep(0.1)
             if self.new:
                 main.move(self.table)#self.img)
@@ -72,6 +79,6 @@ if __name__ == "__main__":
 
     x = app.exec_()
     #th.terminate()
-    Image.timer_stop()
+    Shooter.timer_stop()
     print "finished"
     sys.exit(x)

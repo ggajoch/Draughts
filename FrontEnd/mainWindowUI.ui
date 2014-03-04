@@ -14,23 +14,13 @@
    <string>Draughts player</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTextBrowser" name="movesList">
-    <property name="geometry">
-     <rect>
-      <x>840</x>
-      <y>20</y>
-      <width>256</width>
-      <height>471</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>674</x>
+      <x>630</x>
       <y>80</y>
-      <width>92</width>
-      <height>112</height>
+      <width>120</width>
+      <height>146</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
@@ -59,6 +49,13 @@
       <widget class="QPushButton" name="makeMoveButton">
        <property name="text">
         <string>Make move</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QPushButton" name="saveSettingsButton">
+       <property name="text">
+        <string>Save settings</string>
        </property>
       </widget>
      </item>
@@ -107,24 +104,64 @@
      </widget>
     </widget>
    </widget>
-   <widget class="QLabel" name="text">
+   <widget class="QLabel" name="connectionStatusLabel">
     <property name="geometry">
      <rect>
-      <x>660</x>
-      <y>530</y>
-      <width>381</width>
-      <height>71</height>
+      <x>630</x>
+      <y>610</y>
+      <width>131</width>
+      <height>16</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <family>Comic Sans MS</family>
-      <pointsize>36</pointsize>
-     </font>
-    </property>
     <property name="text">
-     <string/>
+     <string>Connection Status:</string>
     </property>
+   </widget>
+   <widget class="QTabWidget" name="tabWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>20</y>
+      <width>261</width>
+      <height>441</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Moves list</string>
+     </attribute>
+     <widget class="QTextBrowser" name="movesListTextBrowser">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>256</width>
+        <height>421</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>Logs</string>
+     </attribute>
+     <widget class="QTextBrowser" name="logsTextBrowser">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>256</width>
+        <height>421</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

@@ -1,57 +1,9 @@
-import cv2
 import copy
 import sys
-from threading import Timer
-import time
-
 import numpy as np
-
+import cv2
 import Game.basicStructs as BS
 
-
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~~IMAGE TAKING LIB ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-request = False
-timerStop = False
-def get_img():
-    #print "Request!"
-    global request
-    request = True
-    while request == True:
-        time.sleep(0.1)
-    img = cv2.imread("shot.jpg")
-    return img
-
-def take_photo():
-    #print conf.IP
-    import MainApp.conf as conf
-    import urllib
-
-    try:
-        urllib.urlretrieve("http://" + str(conf.get('IP')) + ":8080/shot.jpg", "shot.jpg")
-    except:
-        print "Cannot connect!"
-        #os.system(r"wget --tries 1 --timeout 3 http://" + str(conf.get('IP')) + ":8080/shot.jpg -O shot.jpg --quiet")
-
-
-timer = Timer(0,0)
-
-def check_for_request(): #periodically checking for new request from other threads
-    global request
-    if request:
-        take_photo()
-        request = False
-    global timer
-    if not timerStop:
-        timer = Timer(0.1, check_for_request)
-        timer.start()
-check_for_request()
-
-def timer_stop():
-    global timerStop, timer
-    timerStop = True
-    timer.cancel()
-# ~~~~~~~~~~~~~~~~~~~~~~~~~END IMAGE TAKING LIB ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 class Field:
     def __init__(self, Image, xx, yy):
@@ -136,7 +88,7 @@ class ImageProcess:
     def imageSplit(self):
         import MainApp.conf as conf
 
-        self.splitPoints = eval(conf.get('splitPoints'))
+        self.splitPoints = eval(str(conf.get('splitPoints')))
         if len(self.splitPoints) != 4:
             print "Board not detected!"
         rows, cols, ch = self.img.shape
@@ -148,10 +100,11 @@ class ImageProcess:
 
         #~~~~~~~~~~~~~~IMAGE ROTATION~~~~~~~~~~~~
 
-        #rows, cols, depth = self.trimmed.shape
+        rows, cols, depth = self.trimmed.shape
 
-        #M = cv2.getRotationMatrix2D((cols/2, rows/2), 90, 1)
-        #self.trimmed = cv2.warpAffine(self.trimmed, M, (cols, rows))
+        M = cv2.getRotationMatrix2D((cols / 2, rows / 2), 45 * int(conf.get('rotate')), 1)
+        self.trimmed = cv2.warpAffine(self.trimmed, M, (cols, rows))
+        self.edgesImage = cv2.warpAffine(self.edgesImage, M, (cols, rows))
 
 
         #~~~~~~~~~~~~~~IMAGE ROTATION~~~~~~~~~~~~
@@ -189,10 +142,11 @@ class ImageProcess:
         #img2 = cv2.medianBlur(img2, 5)
         #self.edgesImage = cv2.GaussianBlur(img2, (3, 3), 0)
         self.edgesImage = copy.deepcopy(image)
-        self.edgesImage = cv2.Canny(self.edgesImage, float(conf.get('param1')), float(conf.get('param2'))) #90, 200
 
         self.img = copy.deepcopy(image)
         self.imageSplit()
+
+        self.edgesImage = cv2.Canny(self.edgesImage, float(conf.get('param1')), float(conf.get('param2'))) #90, 200
 
         result = [[0 for i in xrange(8)] for j in xrange(8)]
         for i in xrange(8):
