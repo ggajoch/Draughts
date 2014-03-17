@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'configWindowUI.ui'
 #
-# Created: Tue Mar  4 12:56:24 2014
+# Created: Sat Mar 08 00:05:20 2014
 #      by: PyQt4 UI code generator 4.10.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,13 +17,11 @@ except AttributeError:
 
 try:
     _encoding = QtGui.QApplication.UnicodeUTF8
-
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig, _encoding)
 except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
-
 
 class Ui_Config(object):
     def setupUi(self, Config):
@@ -88,7 +86,7 @@ class Ui_Config(object):
         self.verticalLayout_2.setMargin(0)
         self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
         self.colorThresholdVal = QtGui.QSlider(self.layoutWidget2)
-        self.colorThresholdVal.setMaximum(300)
+        self.colorThresholdVal.setMaximum(1000)
         self.colorThresholdVal.setOrientation(QtCore.Qt.Horizontal)
         self.colorThresholdVal.setObjectName(_fromUtf8("colorThresholdVal"))
         self.verticalLayout_2.addWidget(self.colorThresholdVal)
@@ -155,17 +153,15 @@ class Ui_Config(object):
         self.verticalLayout_4.addItem(spacerItem1)
         self.buttonBox = QtGui.QDialogButtonBox(self.layoutWidget4)
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel | QtGui.QDialogButtonBox.Ok)
+        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName(_fromUtf8("buttonBox"))
         self.verticalLayout_4.addWidget(self.buttonBox)
 
         self.retranslateUi(Config)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("accepted()")), Config.accept)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("rejected()")), Config.reject)
-        QtCore.QObject.connect(self.colorThresholdVal, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")),
-                               self.spinBox.setValue)
-        QtCore.QObject.connect(self.spinBox, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")),
-                               self.colorThresholdVal.setValue)
+        QtCore.QObject.connect(self.colorThresholdVal, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.spinBox.setValue)
+        QtCore.QObject.connect(self.spinBox, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.colorThresholdVal.setValue)
         QtCore.QObject.connect(self.p1, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.spinBox_2.setValue)
         QtCore.QObject.connect(self.spinBox_2, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.p1.setValue)
         QtCore.QObject.connect(self.p2, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.spinBox_3.setValue)

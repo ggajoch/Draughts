@@ -96,18 +96,30 @@ class ImageProcess:
         pts2 = np.float32([[0, 0], [600, 0], [0, 600], [600, 600]])
         M = cv2.getPerspectiveTransform(pts1, pts2)
         self.trimmed = cv2.warpPerspective(self.img, M, (600, 600))
-        self.edgesImage = cv2.warpPerspective(self.edgesImage, M, (600, 600))
 
         #~~~~~~~~~~~~~~IMAGE ROTATION~~~~~~~~~~~~
 
         rows, cols, depth = self.trimmed.shape
 
-        M = cv2.getRotationMatrix2D((cols / 2, rows / 2), 45 * int(conf.get('rotate')), 1)
-        self.trimmed = cv2.warpAffine(self.trimmed, M, (cols, rows))
-        self.edgesImage = cv2.warpAffine(self.edgesImage, M, (cols, rows))
+        matrix = cv2.getRotationMatrix2D((cols / 2, rows / 2), 45 * int(conf.get('rotate')), 1)
+        self.trimmed = cv2.warpAffine(self.trimmed, matrix, (cols, rows))
 
 
-        #~~~~~~~~~~~~~~IMAGE ROTATION~~~~~~~~~~~~
+        #~~~~~~~~~~~~~~~generating edges image~~~~~~~~~~~~
+        self.edgesImage = cv2.cvtColor(self.trimmed, cv2.COLOR_BGR2GRAY)
+        self.edgesImage = cv2.medianBlur(self.edgesImage, 5)
+        self.edgesImage = cv2.GaussianBlur(self.edgesImage, (3, 3), 0)
+        #self.edgesImage = copy.deepcopy(image)
+        self.edgesImage = cv2.Canny(self.edgesImage, float(conf.get('param1')), float(conf.get('param2'))) #90, 200
+        #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        self.normalImage = copy.deepcopy(self.trimmed)
+
+        #~~~~~ROTATING FOR ALGORITHM:~~~~~~~~~~~~~~~~~~~~~~
+        rows, cols, depth = self.trimmed.shape
+        matrix = cv2.getRotationMatrix2D((cols / 2, rows / 2), -180, 1)
+        self.trimmed = cv2.warpAffine(self.trimmed, matrix, (cols, rows))
+
+
 
         points = []
         for i in range(1, 602, 75):
@@ -138,15 +150,8 @@ class ImageProcess:
     def frame_table(self, image, AIIsWhite):
         import MainApp.conf as conf
 
-        img2 = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        #img2 = cv2.medianBlur(img2, 5)
-        #self.edgesImage = cv2.GaussianBlur(img2, (3, 3), 0)
-        self.edgesImage = copy.deepcopy(image)
-
         self.img = copy.deepcopy(image)
         self.imageSplit()
-
-        self.edgesImage = cv2.Canny(self.edgesImage, float(conf.get('param1')), float(conf.get('param2'))) #90, 200
 
         result = [[0 for i in xrange(8)] for j in xrange(8)]
         for i in xrange(8):
@@ -154,6 +159,10 @@ class ImageProcess:
                 if (i + j) % 2 == 1:
                     #print [i, j]
                     result[i][j] = self.searchForPawn(self.FieldTable[i][j], [i, j])
+
+        rows, cols, depth = self.trimmed.shape
+        matrix = cv2.getRotationMatrix2D((cols / 2, rows / 2), 180, 1)
+        self.trimmed = cv2.warpAffine(self.trimmed, matrix, (cols, rows))
 
         board = BS.Board()
         rotatedBoard = BS.Board()
@@ -191,7 +200,7 @@ class ImageProcess:
         img2 = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         img2 = cv2.medianBlur(img2, 5)
         edges = cv2.GaussianBlur(img2, (3, 3), 0)
-        edges = cv2.Canny(edges, 90, 200)
+        edges = cv2.Canny(edges, float(conf.get('param1')), float(conf.get('param1')))
         #show_image(edges)
         x, dst = cv2.threshold(img2, 50, 255, cv2.THRESH_BINARY)
         #show_image(dst)

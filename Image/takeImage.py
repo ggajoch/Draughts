@@ -1,6 +1,10 @@
 from threading import Timer
 import time
 import cv2
+from MainApp.logger import log
+import MainApp.conf as conf
+import socket
+socket.setdefaulttimeout(2)
 
 request = False
 timerStop = False
@@ -22,13 +26,16 @@ def take_photo():
 
     global success
 
+    log("Connecting... ",line=False)
+
     try:
         urllib.urlretrieve("http://" + str(Conf.get('IP')) + ":8080/shot.jpg", "shot.jpg")
-    except:
+    except Exception as ex:
         success = False
-        print "Cannot connect!"
+        log("Cannot connect!" + str(ex), error=True,time=False)
         return False
     else:
+        log("OK",False)
         success = True
         return True
 

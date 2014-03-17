@@ -6,9 +6,9 @@ from PyQt4.QtCore import *
 
 import Image.Image as Image
 import Image.takeImage as Shooter
+from MainApp import logger
 import mainWindow
 import MainApp.mainApp as main
-
 
 ImageProcess = Image.ImageProcess()
 
@@ -24,43 +24,45 @@ class Worker(QThread):
         self.new = False
 
     def calc_image(self):
-        #try:
-        self.ui.imgNormal = self.img
-        self.ui.imgEdges = self.img
-        self.table = ImageProcess.frame_table(self.img, False)
-        self.ui.imgNormal = ImageProcess.trimmed
-        self.ui.imgEdges = ImageProcess.edgesImage
-        self.ui.updateImage()
+        try:
+            self.ui.imgNormal = self.img
+            self.ui.imgEdges = self.img
+            self.table = ImageProcess.frame_table(self.img, False)
+            self.ui.imgNormal = ImageProcess.trimmed
+            self.ui.imgEdges = ImageProcess.edgesImage
+            self.ui.updateImage()
         #print "New image"
-        #except Exception as ex:
-        #    print "Error!", ex
+        except Exception as ex:
+            logger.log("cannot calculate image" + str(ex), error=True)
 
     def run(self):
         while True:
             if image_update_flag:
                 self.img = Shooter.get_img()
                 if self.img is None:
-                    print "Cannot connect!"
+                    self.ok = False
                     self.ui.setConnectionStatus(False)
                 else:
+                    self.ok = True
                     self.ui.setConnectionStatus(True)
                     self.calc_image()
             time.sleep(0.1)
-            if self.new:
-                main.move(self.table)#self.img)
+            if self.ok:#self.new:
+                main.move(self.table,self.ui)#self.img)
                 self.new = False
 
     def new_move(self):
         self.new = True
 
     def calibrate_image(self):
+        logger.log("calibrating image")
         global image_update_flag
         image_update_flag = False
         try:
-            img = Image.get_img()
+            img = Shooter.get_img()
             ImageProcess.calibrate_board(img)
-        except:
-            print "Cannot connect!"
+        except Exception as ex:
+            logger.log("cannot calibrate image" + str(ex),error=True)
         image_update_flag = True
 
 
@@ -71,14 +73,17 @@ if __name__ == "__main__":
     ui = mainWindow.mainWindow()
     ui.show()
 
+    logger.register_ui(ui)
+
     th = Worker(ui)
 
     ui.use_thread(th)
 
     th.start()
 
+    logger.log("Starting app")
     x = app.exec_()
     #th.terminate()
     Shooter.timer_stop()
-    print "finished"
+    logger.log("app end")
     sys.exit(x)

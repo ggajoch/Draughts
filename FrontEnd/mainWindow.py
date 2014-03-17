@@ -7,14 +7,14 @@ import nxtWindow
 import configWindow
 import mainWindowUI as ui
 import gui
-
+from MainApp.logger import log
 
 class mainWindow(QMainWindow, ui.Ui_MainWindow):
     def __init__(self, parent=None):
         super(mainWindow, self).__init__(parent)
         self.setupUi(self)
         self.thread = gui.Worker()
-        self.connect(self.configButton,SIGNAL("clicked()"),self.configButton_click)
+        self.connect(self.configButton, SIGNAL("clicked()"), self.configButton_click)
         self.connect(self.nxtControlButton, SIGNAL("clicked()"), self.nxtControlButton_click)
         self.connect(self.makeMoveButton, SIGNAL("clicked()"), self.new_move)
 
@@ -22,6 +22,7 @@ class mainWindow(QMainWindow, ui.Ui_MainWindow):
         self.connect(self, SIGNAL("textLabel"), self.setTextHandler)
         self.connect(self, SIGNAL("image_update"), self.updateImageHadler)
         self.connect(self, SIGNAL("connectionStatusHandler"), self.connectionStatusHandler)
+        self.connect(self, SIGNAL("logAppend"), self.LogHandler)
 
     def use_thread(self, thr):
         self.thread = thr
@@ -30,14 +31,17 @@ class mainWindow(QMainWindow, ui.Ui_MainWindow):
 
 
     def new_move(self):
+        log("making move")
         self.thread.new_move()
     def on_saveSettingsButton_clicked(self):
         config.save_config()
     def nxtControlButton_click(self):
+        log("opening NXT window")
         ui = nxtWindow.nxtWindow(self)
         ui.exec_()
     def configButton_click(self):
         import MainApp.conf as Conf
+        log("opening configuration window")
         ui = configWindow.configWindow(self)
         ui.WorkingThread = self.thread
         ui.lineEdit.setText(config.get('IP'))
@@ -48,11 +52,11 @@ class mainWindow(QMainWindow, ui.Ui_MainWindow):
             config.set('IP', ui.lineEdit.text())
             config.set('threshold', ui.colorThresholdVal.value())
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    def add_text(self,string):
-        self.textToAdd = string
-        self.emit(SIGNAL("moveList"),self.add_MoveTextHandler)
+    def add_move(self, string):
+        self.textToAdd = str(string)
+        self.emit(SIGNAL("moveList"), self.add_MoveTextHandler)
     def add_MoveTextHandler(self):
-        self.movesList.append(self.textToAdd)
+        self.movesListTextBrowser.append(self.textToAdd)
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def updateImage(self):
         self.emit(SIGNAL("image_update"), self.updateImageHadler)
@@ -78,15 +82,17 @@ class mainWindow(QMainWindow, ui.Ui_MainWindow):
     def setTextHandler(self):
         self.text.setText(self.textForLabel)
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    def Log(self, str):
+    def Log(self,str):
         self.logText = str
         self.emit(SIGNAL("logAppend"), self.LogHandler)
     def LogHandler(self):
-        self.logsTextBrowser.append(self.logText)
+        self.logsTextBrowser.setHtml(self.logText)
+        x = self.logsTextBrowser.verticalScrollBar()
+        x.setValue(x.maximum())
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def setConnectionStatus(self, val):
         self.connectionStatusVal = val
-        self.emit(SIGNAL("connectionStatusHandler"),self.connectionStatusHandler)
+        self.emit(SIGNAL("connectionStatusHandler"), self.connectionStatusHandler)
     def connectionStatusHandler(self):
         if self.connectionStatusVal:
             self.connectionStatusLabel.setText("<font color=#000000>Connection status: OK</font>")

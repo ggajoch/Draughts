@@ -114,7 +114,7 @@
      <item>
       <widget class="QSlider" name="colorThresholdVal">
        <property name="maximum">
-        <number>300</number>
+        <number>1000</number>
        </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
