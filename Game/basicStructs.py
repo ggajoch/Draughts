@@ -194,8 +194,13 @@ class Board:
 
             if flat.equal(nextBoard):
                 Actual.swapSides()
-                return Actual
-        return None
+                for m in move:
+                    m.src.x = 7-m.src.x
+                    m.src.y = 7-m.src.y
+                    m.dst.x = 7-m.dst.x
+                    m.dst.y = 7-m.dst.y
+                return (Actual, move)
+        return (Actual, None)
 
 
 class Shift:
@@ -209,6 +214,29 @@ class Shift:
 
     def __repr__(self):
         return "\n(" + str(self.src) + " -> " + str(self.dst) + ")"
+
+def fieldToString(field, rightAlign = False):
+    if field.x == -1 or field.y == -1 or (field.x == 8 and field.y == 8):
+        s = "X"
+    elif field.x == -2 or field.y == -2:
+        s = "King"
+    else:
+        s = "%c%d" % (chr(ord('A') + 7 - field.x), 8-field.y)
+    return s
+
+def movesListToString(mov, rightAlign = False):
+    try:
+        print mov, mov[0], mov[0].src.x
+        s = ""
+        for m in mov:
+            if rightAlign:
+                s += "\t\t"
+            s += fieldToString(m.src) + " -> " + fieldToString(m.dst) + "\n"
+        #string = "%c%d -> %c%d" % (chr(ord('A') + 7 - mov[0].src.x), 8-mov[0].src.y, chr(ord('A') + 7 - mov[0].dst.x), 8-mov[0].dst.y)
+        print s
+        return s
+    except:
+        return ""
 
 
 class Move:

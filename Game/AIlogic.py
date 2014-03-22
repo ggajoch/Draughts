@@ -4,13 +4,14 @@ from basicStructs import *
 
 #CONSTANTS:
 
-FlatLevels = [[[x, y] for x in xrange(8) for y in range(i, i + 2)] for i in [0, 2, 4, 6]]
-PointsForFlatLevels = [2, 4, 8, 15]
+FlatLevelsNr = 3
+FlatLevels = [5, 3, 1]
+PointsForFlatLevels = [7, 5, 3]
 PointsForHuman = PointsForFlatLevels[:]
 PointsForHuman.reverse()
 
-PawnPoints = 5
-KingPoints = 80
+PawnPoints = 20
+KingPoints = 50
 
 INF = 9e99
 
@@ -19,103 +20,94 @@ def boardPoints(board):
     res = 0
     tmp = board.gameWon()
     if tmp != 0:
-        return tmp * 9e99
+        return tmp * 9e69
     for pos in boardCoords:
         if board[pos] == Field.AI:
+            for i in xrange(FlatLevelsNr):
+                if pos[1] > FlatLevels[i]:
+                    #print "position:", pos, "points: ",PointsForFlatLevels[i]
+                    res += PointsForFlatLevels[i]
+                    break
             res += PawnPoints
         elif board[pos] == Field.AI_KING:
             res += KingPoints
         elif board[pos] == Field.HU:
+            for i in xrange(FlatLevelsNr):
+                if 7-pos[1] > FlatLevels[i]:
+                    #print "position:", pos, "points: ",(-PointsForFlatLevels[i])
+                    res -= PointsForFlatLevels[i]
+                    break
             res -= PawnPoints
         elif board[pos] == Field.HU_KING:
             res -= KingPoints
 
-    for i in xrange(len(FlatLevels)):
+
+
+    """for i in xrange(len(FlatLevels)):
         for field in FlatLevels[i]:
             if board[field] == Field.HU:
                 res -= PointsForHuman[i]
             elif board[field] == Field.AI:
-                res += PointsForFlatLevels[i]
+                res += PointsForFlatLevels[i]"""
     return res
 
 
 nodes = 0
-
+nodesMax = 1
 
 def alfabeta(board, depth, maximizingPlayer, alfa, beta):
-    #print "(",depth,alfa,beta,")"
-    ##print board
-
-    #childs = []
     global nodes
     nodes += 1
 
-    #if maximizingPlayer:
-    #print "MAXI"
-    #else:
-    #print "MINI"
-    #tt = copy.copy(nodes)
-    #print "INPUT Node nr",nodes,"depth = ",depth
-
-    tmp = board.gameWon()
+    """tmp = board.gameWon()
     if tmp != 0:
         if maximizingPlayer:
-            #print "OUT Node nr",tt,"points =",9e52*tmp
+            print "OUT Node nr",nodes,"points =",9e52*tmp
             return [9e52 * tmp, None]
         else:
-            #print "OUT Node nr",tt,"points =",-9e52*tmp
-            return [-9e52 * tmp, None]
-    if depth == 0:
-        #print "OUT Node nr",tt,"points = ",boardPoints(board)
-        return [boardPoints(board), None]
+            print "OUT Node nr",nodes,"points =",-9e52*tmp
+            return [-9e52 * tmp, None]"""
+    x = boardPoints(board)
+    if depth == 0 or abs(x) > 9e60:
+        return [x, None]
+
     if maximizingPlayer:
         bestMove = None
-        #alfa = -9e99
         mov = board.possibleMoves()
-        #if len(mov) == 1:
-        #   return (alfa, mov[0])
         for i in mov:
             board2 = copy.deepcopy(board)
             board2.executeMove(i)
             board2.swapSides()
-            #print "moving",i
             val = alfabeta(board2, depth - 1, False, alfa, beta)[0]
-            #print "Max|",val,i,"|"
-            #childs.append((val, i))
             if val > alfa:
                 alfa = val
                 bestMove = i
             if alfa >= beta:
                 break
-                #print "OUT Node nr",tt,"points = ",alfa
-                #if depth == 5:
-                #print childs
         return [alfa, bestMove]
     else:
         bestMove = None
-        #beta = 9e99
         mov = board.possibleMoves()
-        #if len(mov) == 1:
-        #    return (beta, mov[0])
-
         for i in mov:
             board2 = copy.deepcopy(board)
             board2.executeMove(i)
             board2.swapSides()
-            #print "moving",i
             val = alfabeta(board2, depth - 1, True, alfa, beta)[0]
-            #print "Min|",val,i,"|"
             if val < beta:
                 beta = val
                 bestMove = i
             if alfa >= beta:
                 break
-                #print "OUT Node nr",tt,"points = ",beta
         return [beta, bestMove]
 
 
 def minimaks(board, depth):
-    return alfabeta(board, depth, True, -9e99, 9e99)
+    global nodesMax, nodes
+    nodesMax = 10**(depth-2);
+    nodes = 0
+    x = alfabeta(board, depth, True, -9e99, 9e99)
+    nodes = 0
+    return x
 
 
 def readInt(a):
