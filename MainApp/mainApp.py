@@ -1,6 +1,7 @@
 from Game.AIlogic import *
 import Image.Image as Image
 from MainApp.logger import log
+from Game.basicStructs import send_moves_list as send
 
 a = Board()
 
@@ -18,38 +19,14 @@ turns = 0
 proc = Image.ImageProcess()
 
 
-def move(table, ui):
-    global a, turns
-    #img = Image.take_photo()
-    #b = proc.frame_table(img, False)
-    After = a.boardFromCamera(table)
+def set_position(table):
+    global a
+    log("Board set")
+    a = table
 
-    if After is not None:
-        print "OK"
-        log("move OK")
-        bads = 0
-        a = After
-        ok = 1
 
-        sys.stdout.write("Turn " + str(turns))
-        turns += 1
-        log("calculating move... ", line=False,time=False)
-        res = minimaks(copy.deepcopy(a), 6)
-        log("done")
-        print "White:", res[1]
-        #ui.add_move(res[1])
-        string = "%c%d -> %c%d" % (chr(ord('A') + 7 - res[1][0].src.x), 8-res[1][0].src.y, chr(ord('A') + 7 - res[1][0].dst.x), 8-res[1][0].dst.y)
-        ui.add_move(string)
-        a.executeMove(res[1])
-        print "After Move:\n", a
-    else:
-        log("bad move",error=True)
-        print "Bad Move! Try again!\nPrevious board:"
-        print a
-        print "Actual board:"
-        print table
-
-    res = a.gameWon()
+def check_game_end(table, ui):
+    res = table.gameWon()
     if res != 0:
         if res == 1:
             log("AI won!")
@@ -59,6 +36,51 @@ def move(table, ui):
             print "Human won!"
         log("game ended in %d turns" % turns)
         print "In", turns, "turns."
+        return True
+    return False
+
+
+def move(table, ui):
+    global a, turns
+    #img = Image.take_photo()
+    #b = proc.frame_table(img, False)
+    (After, move) = a.boardFromCamera(table)
+
+    #print "points: ",boardPoints(table)
+
+    if move is not None:
+        s = movesListToString(move)
+        ui.add_move(s)
+        print "OK"
+        log("move OK")
+        bads = 0
+        a = After
+        ok = 1
+
+        sys.stdout.write("Turn " + str(turns))
+        turns += 1
+
+        if check_game_end(a, ui): return True
+
+        log("calculating move... ", line=False,time=False)
+        res = minimaks(copy.deepcopy(a), 6)  #was 6
+        log("done")
+        print "White:", res, res[1]
+
+        s = movesListToString(res[1], True)
+        send(res[1])
+        ui.add_move(s)
+        a.executeMove(res[1])
+        print "After Move:\n", a
+    else:
+        log("bad move",error=True)
+        #print "Bad Move! Try again!\nPrevious board:"
+        #print a
+        #print "Actual board:"
+        #print table
+
+    if check_game_end(a, ui): return True
+    return False
 
 
 """class MainApp(QThread):

@@ -1,5 +1,6 @@
 import sys
 import time
+from threading import Timer
 
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
@@ -22,6 +23,9 @@ class Worker(QThread):
         #self.ui = mainWindow.mainWindow()
         self.ui = Main
         self.new = False
+        self.set_pos_flag = False
+        self.dots = 0
+        self.gameplay = True
 
     def calc_image(self):
         try:
@@ -47,9 +51,34 @@ class Worker(QThread):
                     self.ui.setConnectionStatus(True)
                     self.calc_image()
             time.sleep(0.1)
-            if self.ok:#self.new:
-                main.move(self.table,self.ui)#self.img)
+            if self.ok and self.gameplay:  #self.new:
+                self.ui.Log("making move...")
+                self.t = Timer(0.5, self.update_thinking_status)
+                self.t.start()
+                if main.move(self.table, self.ui):
+                    #self.gameplay = False
+                    pass
+                self.t.cancel()
+                ui.update_thinking_bar()
+                ui.update_thinking_label("")
                 self.new = False
+                if self.set_pos_flag:
+                    main.set_position(self.table)
+                    self.set_pos_flag = False
+
+    def update_thinking_status(self):
+        ui.update_thinking_bar()
+        str = "Thinking"
+        for i in xrange(self.dots):
+            str += "."
+        ui.update_thinking_label(str)
+        self.dots += 1
+        self.dots = self.dots % 4
+        self.t = Timer(0.5, self.update_thinking_status)
+        self.t.start()
+
+    def set_position(self):
+        self.set_pos_flag = True
 
     def new_move(self):
         self.new = True

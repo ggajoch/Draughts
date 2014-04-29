@@ -1,7 +1,9 @@
 import copy
 import sys
-import numpy as np
 import cv2
+
+import numpy as np
+
 import Game.basicStructs as BS
 
 
@@ -148,7 +150,6 @@ class ImageProcess:
                 cv2.circle(self.trimmed, (x2, y2), 2, (0, 0, 255))
 
     def frame_table(self, image, AIIsWhite):
-        import MainApp.conf as conf
 
         self.img = copy.deepcopy(image)
         self.imageSplit()
@@ -235,7 +236,8 @@ class ImageProcess:
         try:
             sums /= divi
         except TypeError:
-            print circles
+            pass
+            #print circles
 
         #print "|!!!| ", sums, divi
 

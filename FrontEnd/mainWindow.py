@@ -1,13 +1,15 @@
+import cv2
+
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 
-import cv2
 import MainApp.conf as config
 import nxtWindow
 import configWindow
 import mainWindowUI as ui
 import gui
 from MainApp.logger import log
+
 
 class mainWindow(QMainWindow, ui.Ui_MainWindow):
     def __init__(self, parent=None):
@@ -17,12 +19,15 @@ class mainWindow(QMainWindow, ui.Ui_MainWindow):
         self.connect(self.configButton, SIGNAL("clicked()"), self.configButton_click)
         self.connect(self.nxtControlButton, SIGNAL("clicked()"), self.nxtControlButton_click)
         self.connect(self.makeMoveButton, SIGNAL("clicked()"), self.new_move)
+        self.connect(self.setBoard, SIGNAL("clicked()"), self.setBoardHandler)
 
         self.connect(self, SIGNAL("moveList"), self.add_MoveTextHandler)
         self.connect(self, SIGNAL("textLabel"), self.setTextHandler)
         self.connect(self, SIGNAL("image_update"), self.updateImageHadler)
         self.connect(self, SIGNAL("connectionStatusHandler"), self.connectionStatusHandler)
         self.connect(self, SIGNAL("logAppend"), self.LogHandler)
+        self.connect(self, SIGNAL("update_thinking_labelHandler"), self.update_thinking_labelHandler)
+        self.connect(self, SIGNAL("update_thinking_barHandler"), self.update_thinking_barHandler)
 
     def use_thread(self, thr):
         self.thread = thr
@@ -52,7 +57,10 @@ class mainWindow(QMainWindow, ui.Ui_MainWindow):
             config.set('IP', ui.lineEdit.text())
             config.set('threshold', ui.colorThresholdVal.value())
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    def add_move(self, string):
+
+    def add_move(self, string, rightAlign=False):
+        if rightAlign:
+            string = "      " + string
         self.textToAdd = str(string)
         self.emit(SIGNAL("moveList"), self.add_MoveTextHandler)
     def add_MoveTextHandler(self):
@@ -98,3 +106,26 @@ class mainWindow(QMainWindow, ui.Ui_MainWindow):
             self.connectionStatusLabel.setText("<font color=#000000>Connection status: OK</font>")
         else:
             self.connectionStatusLabel.setText("<font color=#FF0000>Connection status: FAIL!</font>")
+
+    def setBoardHandler(self):
+        print "SET BOARD"
+        self.thread.set_pos_flag = True
+
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    def update_thinking_bar(self):
+        import Game.AIlogic as ai
+        #print ai.nodes, ai.nodesMax
+        p = (100.0 * ai.nodes) / ai.nodesMax;
+        if p > 100: p = 100
+        self.pVal = p
+        self.emit(SIGNAL("update_thinking_barHandler"), self.update_thinking_barHandler)
+
+    def update_thinking_barHandler(self):
+        self.thinkingProgress.setValue(int(self.pVal))
+
+    def update_thinking_label(self, str):
+        self.thinkingLabelString = str
+        self.emit(SIGNAL("update_thinking_labelHandler"), self.update_thinking_labelHandler)
+
+    def update_thinking_labelHandler(self):
+        self.thinkingLabel.setText(self.thinkingLabelString)

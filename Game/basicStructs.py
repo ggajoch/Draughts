@@ -1,5 +1,7 @@
 import copy
 
+import NXTprotocol.nxt as nxt
+
 
 class Field:
     EMPTY = 0
@@ -183,6 +185,7 @@ class Board:
         now.swapSides()
         #print "nextBoard:"
         #print nextBoard
+        Actual = None
         for move in now.possibleMoves():
             Actual = now.copy()
             Actual.executeMove(move)
@@ -226,17 +229,23 @@ def fieldToString(field, rightAlign = False):
 
 def movesListToString(mov, rightAlign = False):
     try:
-        print mov, mov[0], mov[0].src.x
+        #print mov, mov[0], mov[0].src.x
         s = ""
         for m in mov:
             if rightAlign:
                 s += "\t\t"
             s += fieldToString(m.src) + " -> " + fieldToString(m.dst) + "\n"
         #string = "%c%d -> %c%d" % (chr(ord('A') + 7 - mov[0].src.x), 8-mov[0].src.y, chr(ord('A') + 7 - mov[0].dst.x), 8-mov[0].dst.y)
-        print s
+        #print s
         return s
     except:
         return ""
+
+
+def send_moves_list(mov):
+    for m in mov:
+        nxt.send_move(m.src.x, m.src.y, m.dst.x, m.dst.y)
+    nxt.send_move(8, 8, 8, 1)
 
 
 class Move:

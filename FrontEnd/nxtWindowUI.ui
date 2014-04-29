@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -27,20 +27,6 @@
      <layout class="QGridLayout" name="gridLayout_4">
       <item row="0" column="0">
        <layout class="QGridLayout" name="gridLayout_2">
-        <item row="1" column="0">
-         <widget class="QPushButton" name="homeY">
-          <property name="text">
-           <string>Home Y</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QPushButton" name="homeX">
-          <property name="text">
-           <string>Home X</string>
-          </property>
-         </widget>
-        </item>
         <item row="0" column="1">
          <spacer name="horizontalSpacer">
           <property name="orientation">
@@ -53,6 +39,13 @@
            </size>
           </property>
          </spacer>
+        </item>
+        <item row="0" column="0">
+         <widget class="QPushButton" name="homeX">
+          <property name="text">
+           <string>Home axis</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
